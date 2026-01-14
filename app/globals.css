@@ -1,26 +1,353 @@
 @import "tailwindcss";
+/*@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&display=swap");*/
 
+/* ================================
+   🌸 VARIABLES DE DISEÑO (THEME)
+================================ */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* 🌸 Brand Colors (TU PALETA) */
+  --color-primary: #dd2d4a;     
+  --color-secondary: #880d1e;   
+  --color-accent: #f26a8d;      
+  --color-soft-pink: #f49cbb;  
+  --color-bg-main: #FFF3FB; 
+  --color-bg-secondary: #cbeef3; 
+  --color-letra-bg:#0BA4BA;
+
+  /* 🖤 Neutrales */
+  --color-dark: #2b0f16;
+  --color-muted: #7a3a46;
+  --color-soft: #fef6f9;
+
+  /* 🌫 UI States */
+  --color-border: rgba(221, 45, 74, 0.2);
+  --color-shadow: rgba(136, 13, 30, 0.15);
+
+  /* 🧩 Radius */
+  --radius-sm: 0.75rem;
+  --radius-md: 1.25rem;
+  --radius-lg: 2rem;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ================================
+   🌸 RESET & BASE
+================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+:root {
+  --color-teal: #2EC4B6;
+  --color-success: #4CAF50;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: var(--color-bg-main);
+  color: var(--color-dark);
+  font-family: "Inter", system-ui, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ================================
+   🌸 TIPOGRAFÍA
+================================ */
+.font-title {
+  font-family: "Playfair Display", serif;
+  letter-spacing: -0.02em;
+}
+
+.font-body {
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* ================================
+   🌸 HEADINGS
+================================ */
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 1.875rem; }
+h3 { font-size: 1.5rem; }
+
+p {
+  font-size: 1rem;
+  color: var(--color-dark);
+}
+.icon-badge {
+  width: 38px;
+  height: 38px;
+  border-radius: 9999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tool-icon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+
+
+
+/* Responsive */
+@media (min-width: 768px) {
+  h1 { font-size: 3.75rem; }
+  h2 { font-size: 2.25rem; }
+}
+
+/* ================================
+   🌸 LINKS
+================================ */
+a {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* ================================
+   🌸 BOTONES
+================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  background: linear-gradient(
+    135deg,
+    var(--color-secondary),
+    var(--color-secondary)
+  );
+  color: #fff;
+  font-size: 0.875rem;
+  box-shadow: 0 12px 30px var(--color-shadow);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 18px 40px #ffddebe8;
+}
+
+.btn-outline {
+  padding: 0.75rem 2rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-secondary);
+  color: var(--color-secondary);
+  background: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background-color: var(--color-accent);
+  color: var(--color-bg-main);
+}
+
+/* ================================
+   🌸 CARDS
+================================ */
+.card {
+  background-color: #fff;
+  border-radius: var(--radius-lg);
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(136, 13, 30, 0.1);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 45px rgba(221, 45, 74, 0.25);
+}
+
+/* ================================
+   🌸 SECCIONES
+================================ */
+.section {
+  padding: 6rem 1.5rem;
+}
+
+/* ================================
+   🌸 TEXTO SECUNDARIO
+================================ */
+.text-muted {
+  color: var(--color-muted);
+}
+
+/* ================================
+   🌸 SCROLLBAR CUTE
+================================ */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    var(--color-primary),
+    var(--color-accent)
+  );
+  border-radius: 999px;
+}
+
+/* ================================
+   🌸 SELECCIÓN DE TEXTO
+================================ */
+::selection {
+  background-color: var(--color-soft-pink);
+  color: var(--color-secondary);
+}
+
+/* ================================
+   🌸 HERO BACKGROUND TITLE
+================================ */
+.hero-bg-title h1 {
+  font-weight: 900;
+  font-size: clamp(2rem, 20vw, 9rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(221, 45, 74, 0.08);
+  transform: perspective(800px) rotateX(18deg);
+}
+
+/* ================================
+   🌸 UTILIDADES
+================================ */
+.text-gradient {
+  background: linear-gradient(
+    90deg,
+    var(--color-primary),
+    var(--color-accent),
+    var(--color-soft-pink)
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* ================================
+   🌸 UTILIDADES EXTRA UX
+================================ */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(14px);
+  border-radius: var(--radius-lg);
+}
+
+/* ================================
+   🎨 HERO DECORATIVE TITLE
+   (PORTAFOLIO BACKGROUND)
+================================ */
+
+.hero-bg-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  width: 100%;
+  align-items: center; /* Ayuda a centrar verticalmente */
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden; /* Evita que el texto se desborde */
+}
+
+.hero-bg-title h1 {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  /* Tamaño de fuente adaptable que funciona en todas las pantallas */
+  font-size: clamp(2rem, 20vw, 9rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.06);
+  line-height: 0.8;
+  text-align: center; /* Centra el texto si se divide en varias líneas */
+  word-break: break-word; /* Permite que la palabra se rompa si es necesario */
+
+  /* ✨ efecto arco */
+  transform: perspective(800px) rotateX(18deg);
+}
+
+.soft-shadow {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+}
+.hover-raise:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+}
+.transition-smooth {
+  transition: all 0.3s ease;
+}
+.pointer {
+  cursor: pointer;
+}
+.center-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.responsive-img {
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+}
+.object-fit-cover {
+  object-fit: cover;
+}
+.text-gradient {
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ================================
+   🌸 MEDIA QUERIES ADICIONALES
+   ================================ */
+@media (min-width: 1024px) {
+  .section {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+} 
+@media (max-width: 640px) {
+  h1 {
+    font-size: 2.5rem; /* text-4xl */
+  }
+  
+}
+@media (max-width: 480px) {
+  h2 {
+    font-size: 1.5rem; /* text-2xl */
+  }
 }
