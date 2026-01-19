@@ -1,6 +1,5 @@
 import "./globals.css";
 import Navbar from "@/component/Navbar";
-import Footer from "@/component/Footer";  
 import { Playfair_Display, Inter } from "next/font/google";
 
 const playfair = Playfair_Display({
@@ -24,7 +23,6 @@ export default function RootLayout({
 
         <Navbar />
         {children}
-        <Footer />
       </body>
     </html>
   );
