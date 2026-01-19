@@ -4,10 +4,10 @@ import Link from "next/link";
 import ContactModal from "@/component/contact";
 import ProjectCard from "@/component/ProjectCard";
 import { projects } from "@/data/projects";
-import { ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { ArrowRight, Search, PenTool, Code } from "lucide-react";
+import { motion, Variants } from "framer-motion";
 
-const ANIMATIONS = {
+const ANIMATIONS: Record<string, Variants> = {
   container: {
     hidden: { opacity: 0 },
     visible: {
@@ -45,7 +45,17 @@ const ANIMATIONS = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: "easeOut" as const },
+    },
+  },
+  floating: {
+    animate: {
+      y: [0, -15, 0],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut" as const,
+      },
     },
   },
 };
@@ -113,10 +123,10 @@ export default function HomePage() {
             className="hidden md:flex justify-center"
           >
             <img
-              src="/hero-visual.png"
-              alt="UX UI Design y Frontend Development"
-              className="w-full max-w-md lg:max-w-lg object-contain"
-            />
+  src="/hero-visual.png"
+    className="w-full max-w-md lg:max-w-lg object-contain mix-blend-multiply"
+/>
+
           </motion.div>
       
         </div>
@@ -241,20 +251,72 @@ export default function HomePage() {
               viewport={{ once: true }}
               className="relative flex justify-center items-center"
             >
-          {/* Halo / glow detrás */}
-          <div className="absolute w-[320px] h-[320px] rounded-full 
-                          bg-[var(--color-soft-pink)] 
-                          opacity-40 blur-3xl 
-                          -z-10 hidden lg:block" />
-        
-          {/* Imagen */}
-          <img
-            src="/process.png"
-            alt="Ilustración de proceso UX UI"
-            className="relative max-w-md w-full rounded-full
-                       drop-shadow-2xl hidden lg:block"
-          />
-        </motion.div>
+              {/* Halo / glow detrás más sofisticado */}
+              <div className="absolute w-[500px] h-[500px] rounded-full 
+                              bg-gradient-to-tr from-[var(--color-soft-pink)]/30 to-[var(--color-primary)]/20
+                              opacity-60 blur-[100px] 
+                              -z-10 hidden lg:block" />
+            
+              {/* Contenedor relativo para la composición */}
+              <div className="relative z-10 hidden lg:block">
+                {/* Imagen Principal */}
+                <img
+                  src="/process.png"
+                  alt="Ilustración de proceso UX UI"
+                  className="relative max-w-md w-full rounded-[2.5rem]
+                            shadow-2xl border border-white/50"
+                />
+
+                {/* --- ELEMENTOS FLOTANTES (Diseño Senior) --- */}
+
+                {/* Card 1: Research (Arriba Izquierda) */}
+                <motion.div 
+                  variants={ANIMATIONS.floating}
+                  animate="animate"
+                  className="absolute -top-8 -left-12 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/40 flex items-center gap-4"
+                >
+                  <div className="bg-orange-100 p-3 rounded-xl text-orange-600">
+                      <Search size={24} />
+                  </div>
+                  <div>
+                      <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Research</p>
+                      <p className="text-base font-bold text-gray-800">User Centric</p>
+                  </div>
+                </motion.div>
+
+                {/* Card 2: Design (Centro Derecha) */}
+                <motion.div 
+                  variants={ANIMATIONS.floating}
+                  animate="animate"
+                  transition={{ delay: 1.5, duration: 4, repeat: Infinity, ease: "easeInOut" }} 
+                  className="absolute top-1/2 -right-16 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/40 flex items-center gap-4"
+                >
+                  <div className="bg-purple-100 p-3 rounded-xl text-purple-600">
+                      <PenTool size={24} />
+                  </div>
+                  <div>
+                      <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Design</p>
+                      <p className="text-base font-bold text-gray-800">Pixel Perfect</p>
+                  </div>
+                </motion.div>
+
+                {/* Card 3: Code (Abajo Izquierda) */}
+                <motion.div 
+                  variants={ANIMATIONS.floating}
+                  animate="animate"
+                  transition={{ delay: 0.5, duration: 5, repeat: Infinity, ease: "easeInOut" }} 
+                  className="absolute -bottom-8 left-8 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/40 flex items-center gap-4"
+                >
+                  <div className="bg-blue-100 p-3 rounded-xl text-blue-600">
+                      <Code size={24} />
+                  </div>
+                  <div>
+                      <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Dev</p>
+                      <p className="text-base font-bold text-gray-800">Clean Code</p>
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
 
 
   </div>

@@ -409,7 +409,7 @@ export default function AboutPage() {
 
   <div className="flex flex-wrap gap-3">
     <span className="tool-chip bg-[#E8F1FF] text-[#1A73E8] ">
-      <img src="figma.png" alt="Figma" className="tool-icon"/>
+      <img src="/figma.png" alt="Figma" className="tool-icon"/>
       Figma
     </span>
 
