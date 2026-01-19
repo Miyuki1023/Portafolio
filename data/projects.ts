@@ -496,7 +496,7 @@ export const projects = [
 },
 
 {
-  id: 3,
+  id: 4,
   slug: "plataforma-reserva-consumo",
   title: "Plataforma de Reserva de Consumo",
   subtitle: "Sistema digital de reserva de alimentos para comunidad universitaria",
