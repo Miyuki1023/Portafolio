@@ -2,53 +2,111 @@
 import { Agbalumo } from "next/font/google";
 import { 
   GraduationCap, BookOpen, Code, PenTool, Languages, 
-  Briefcase, Layout, Monitor, Users, CheckCircle2, 
-  Sparkles, Search, Palette, Zap 
+  Layout, Monitor, Users, CheckCircle2, 
+  Sparkles, Search, Palette, Zap, Mail, Phone 
 } from "lucide-react";
 import Image from "next/image";
+import { color } from "framer-motion";
+
 const agbalumo = Agbalumo({
   weight: "400",
   subsets: ["latin"],
 });
 
+// --- DATA: Centralizamos la información para mantener el código limpio ---
+
+const EDUCATION = [
+  {
+    title: "Ingeniería de Software",
+    place: "Universidad Tecnológica del Perú (UTP)",
+    date: "2021 – Actualidad",
+    icon: GraduationCap,
+  },
+  {
+    title: "Curso de Diseño UX/UI",
+    place: "IDAT – Completo",
+    date: "Enero – Febrero 2025",
+    icon: BookOpen,
+  },
+  {
+    title: "Curso de Programación en C++",
+    place: "CTIC UNI – Completo",
+    date: "Enero 2023",
+    icon: Code,
+  },
+  {
+    title: "Curso de Illustrator I",
+    place: "IPAD – Completo",
+    date: "Enero – Marzo 2021",
+    icon: PenTool,
+  },
+  {
+    title: "Curso de Inglés",
+    place: "IPCNA",
+    date: "En pausa (Intermedio 3)",
+    icon: Languages,
+  },
+];
+
+const SOFTWARE = [
+  { name: "Figma", icon: "/figma.png", bg: "bg-[#E8F1FF]", text: "text-[#1A73E8]" },
+  { name: "Illustrator", icon: "/Illustrato.png", bg: "bg-[#FFF3E0]", text: "text-[#FB8C00]" },
+  { name: "Miro", icon: "/miro.png", bg: "bg-[#E0F2F1]", text: "text-[#00695C]" },
+  { name: "Visual Studio Code", icon: "/visual.png", bg: "bg-[#F3F4F6]", text: "text-[#111827]" },
+  { name: "WordPress", icon: "/wordpress.png", bg: "bg-[#E0F2FE]", text: "text-[#0284C7]" },
+  { name: "Notion", icon: "/notion.png", bg: "bg-[#F5F3FF]", text: "text-[#4F46E5]" },
+  { name: "Excel", icon: "/excel.png", bg: "bg-[#ECFDF5]", text: "text-[#047857]" },
+  { name: "Power BI", icon: "/Power_BI.png", bg: "bg-[#FFF7ED]", text: "text-[#EA580C]" },
+];
+
+const TECH_STACK = [
+  { name: "HTML", icon: "/html.png", bg: "bg-[#FFF7ED]", text: "text-[#E34F26]" },
+  { name: "CSS", icon: "/css.png", bg: "bg-[#ECFEFF]", text: "text-[#0EA5E9]" },
+  { name: "JavaScript", icon: "/javascript.png", bg: "bg-[#FEF3C7]", text: "text-[#F59E0B]" },
+  { name: "TypeScript", icon: "/typescript.jpg", bg: "bg-[#EEF2FF]", text: "text-[#6366F1]" },
+  { name: "React", icon: "/React.jpg", bg: "bg-[#ECFDF5]", text: "text-[#16A34A]" },
+  { name: "Tailwind", icon: "/Tailwind.jpg", bg: "bg-[#F0F9FF]", text: "text-[#0284C7]" },
+  { name: "Node.js", icon: "/node.png", bg: "bg-[#F3F4F6]", text: "text-[#111827]" },
+  { name: "MongoDB", icon: "/mongo.png", bg: "bg-[#ECFEFF]", text: "text-[#0891B2]" },
+  { name: "MySQL", icon: "/MySQL.jpg", bg: "bg-[#EFF6FF]", text: "text-[#2563EB]" },
+];
+
 export default function AboutPage() {
   return (
-    <main className="min-h-screen section color-bg-main py-20 space-y-20">
+    <main className="min-h-screen section bg-background py-20 space-y-20">
       <div className="max-w-6xl mx-auto space-y-20">
 
-       <section
-  className="relative rounded-[3rem] px-10 py-14 text-white overflow-hidden"
-  style={{ backgroundColor: "var(--color-secondary)" }}
->
-  {/* ================= FONDO PNG TRANSLÚCIDO ================= */}
-  <div
-    className="absolute inset-0 bg-center bg-cover opacity-40 pointer-events-none"
-    style={{ backgroundImage: "url('/fondo.png')" }}
-  />
+        {/* ================= HERO SECTION ================= */}
+        <section className="relative rounded-[3rem] px-6 py-12 md:px-10 md:py-14 text-background overflow-hidden     bg-[var(--color-secondary)]
+" >
+          {/* Fondo decorativo */}
+          <div
+            className="absolute inset-0 bg-center bg-cover opacity-40 pointer-events-none"
+            style={{ backgroundImage: "url('/fondo.png')" }}
+            aria-hidden={true}
+          />
 
-  {/* ================= CONTENIDO ================= */}
-  <div className="relative grid md:grid-cols-[260px_1fr] gap-10 items-center">
+          <div className="relative grid md:grid-cols-[260px_1fr] gap-10 items-center lg:gap-20">
+            {/* Video Profile */}
+            <div className="relative">
+              <div className="rounded-[2rem] p-1 bg-accent">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  src="/video.mp4"
+                  className="rounded-[1.75rem] object-cover w-full h-[360px]"
+                  aria-hidden={true}
+                />
+              </div>
+            </div>
 
-    {/* FOTO */}
-    <div className="relative">
-      <div
-        className="rounded-[2rem] p-1"
-        style={{ backgroundColor: "var(--color-accent)" }}
-      >
-        <img
-          src="/yo.png"
-          alt="Miyuki Panduro"
-          className="rounded-[1.75rem] object-cover w-full h-[260px]"
-        />
-      </div>
-    </div>
-
-    {/* TEXTO */}
-    <div className="space-y-4">
-
-      <h1
-        className={`${agbalumo.className} text-[75px] leading-tight`}
-        style={{ color: "var(--color-bg-main)" }}
+            {/* Bio Content */}
+            <div className="space-y-6">
+             <h1
+        className={`${agbalumo.className} text-[75px] leading-tight py-6`}
+        style={{ color: "var(--color-bg-main) " }}
       >
         Hola, soy Miyuki
       </h1>
@@ -94,9 +152,13 @@ export default function AboutPage() {
             </svg>
           </span>
 
-          <span style={{ color: "var(--color-bg-main)" }}>
+          <a
+            href="mailto:miyukikahori@gmail.com"
+            style={{ color: "var(--color-bg-main)" }}
+            aria-label="Enviar email a Miyuki"
+          >
             miyukikahori@gmail.com
-          </span>
+          </a>
         </span>
 
         {/* TELÉFONO */}
@@ -123,9 +185,13 @@ export default function AboutPage() {
             </svg>
           </span>
 
-          <span style={{ color: "var(--color-bg-main)" }}>
+          <a
+            href="tel:+51936693905"
+            style={{ color: "var(--color-bg-main)" }}
+            aria-label="Llamar a Miyuki"
+          >
             936 693 905
-          </span>
+          </a>
         </span>
 
       </div>
@@ -134,166 +200,59 @@ export default function AboutPage() {
   </div>
 </section>
 
-
         {/* ================= cuadros de info ================= */}
         <section className="grid md:grid-cols-2 gap-10">
+          {/* EDUCACIÓN */}
+          <div className="card space-y-6">
+            <h3 className="font-title text-secondary text-xl">Educación y Formación</h3>
+            <ul className="space-y-6 text-sm">
+              {EDUCATION.map((item, index) => (
+                <li key={index} className="space-y-2 group">
+                  <div className="flex gap-3">
+                    <item.icon size={20} className="text-primary flex-shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="block text-dark group-hover:text-primary transition-colors">
+                        {item.title}
+                      </strong>
+                      <p className="text-muted">{item.place}</p>
+                    </div>
+                  </div>
+                  <span className="inline-block text-xs px-3 py-1 rounded-full bg-[#CBEEF3] text-[#0BA4BA] font-medium ml-8">
+                    {item.date}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
 
-         <div className="card space-y-6">
-  <h3 className="font-title text-secondary">
-    Educación y Formación
-  </h3>
-
-  <ul className="space-y-5 text-sm">
-
-    {/* Ingeniería */}
-    <li className="space-y-2">
-      <div className="flex gap-3">
-        <GraduationCap
-          size={20}
-          style={{ color: "var(--color-primary)", flexShrink: 0 }}
-        />
-        <div>
-          <strong>Ingeniería de Software</strong>
-          <p className="text-muted">
-            Universidad Tecnológica del Perú (UTP)
-          </p>
-        </div>
-      </div>
-
-      <span
-        className="inline-block text-xs px-4 py-1 rounded-full"
-        style={{
-          backgroundColor: "#CBEEF3",
-          color: "#0BA4BA",
-        }}
-      >
-        2021 – Actualidad
-      </span>
-    </li>
-
-    {/* UX/UI */}
-    <li className="space-y-2">
-      <div className="flex gap-3">
-        <BookOpen
-          size={20}
-          style={{ color: "var(--color-primary)", flexShrink: 0 }}
-        />
-        <div>
-          <strong>Curso de Diseño UX/UI</strong>
-          <p className="text-muted">IDAT – Completo</p>
-        </div>
-      </div>
-
-      <span
-        className="inline-block text-xs px-4 py-1 rounded-full"
-        style={{
-          backgroundColor: "#CBEEF3",
-          color: "#0BA4BA",
-        }}
-      >
-        Enero – Febrero 2025
-      </span>
-    </li>
-
-    {/* C++ */}
-    <li className="space-y-2">
-      <div className="flex gap-3">
-        <Code
-          size={20}
-          style={{ color: "var(--color-primary)", flexShrink: 0 }}
-        />
-        <div>
-          <strong>Curso de Programación en C++</strong>
-          <p className="text-muted">CTIC UNI – Completo</p>
-        </div>
-      </div>
-
-      <span
-        className="inline-block text-xs px-4 py-1 rounded-full"
-        style={{
-          backgroundColor: "#CBEEF3",
-          color: "#0BA4BA",
-        }}
-      >
-        Enero 2023
-      </span>
-    </li>
-
-    {/* Illustrator */}
-    <li className="space-y-2">
-      <div className="flex gap-3">
-        <PenTool
-          size={20}
-          style={{ color: "var(--color-primary)", flexShrink: 0 }}
-        />
-        <div>
-          <strong>Curso de Illustrator I</strong>
-          <p className="text-muted">IPAD – Completo</p>
-        </div>
-      </div>
-
-      <span
-        className="inline-block text-xs px-4 py-1 rounded-full"
-        style={{
-          backgroundColor: "#CBEEF3",
-          color: "#0BA4BA",
-        }}
-      >
-        Enero – Marzo 2021
-      </span>
-    </li>
-
-    {/* Inglés */}
-    <li className="space-y-2">
-      <div className="flex gap-3">
-        <Languages
-          size={20}
-          style={{ color: "var(--color-primary)", flexShrink: 0 }}
-        />
-        <div>
-          <strong>Curso de Inglés</strong>
-          <p className="text-muted">IPCNA</p>
-        </div>
-      </div>
-
-      <span
-        className="inline-block text-xs px-4 py-1 rounded-full"
-        style={{
-          backgroundColor: "#CBEEF3",
-          color: "#0BA4BA",
-        }}
-      >
-        En pausa (Intermedio 3)
-      </span>
-    </li>
-
-  </ul>
-</div>
-
-
+          {/* EXPERIENCIA */}
           <div className="card space-y-5">
-  <h3 className="font-title text-secondary text-lg">
-    Experiencia
-  </h3>
+            <h3 className="font-title text-secondary text-xl">Experiencia</h3>
+            <ul className="text-sm text-muted space-y-5">
+              <li className="flex gap-4 items-start">
+                <div className="space-y-1">
+                  <strong className="text-dark text-base block">
+                    Diseñadora UX/UI & Frontend Developer
+                  </strong>
+                  <span className="text-primary font-medium">
+                    Empresa privada del sector de seguridad
+                  </span>
+                </div>
+              </li>
 
-  <ul className="text-sm text-muted space-y-4">
-    <li className="flex gap-4 items-start">
-      
-      <span>
-        <strong className="text-dark">
-          Diseñadora UX/UI & Frontend Developer
-        </strong>
-        <br />
-        Empresa privada del sector de seguridad privada.
-      </span>
-    </li>
+              <li className="flex gap-4 items-center">
+                <span className="icon-badge bg-accent/15 text-accent">
+                  <Layout size={18} />
+                </span>
+                <span>Diseño de interfaces y experiencia de usuario</span>
+              </li>
 
-    <li className="flex gap-4 items-center">
-      <span className="icon-badge bg-accent/15 text-accent">
-        <Layout size={18} />
-      </span>
-      <span>Diseño de interfaces y experiencia de usuario</span>
-    </li>
+              <li className="flex gap-4 items-center">
+                <span className="icon-badge bg-sky-100 text-sky-600">
+                  <Monitor size={18} />
+                </span>
+                <span>Desarrollo frontend web corporativo</span>
+              </li>
 
     <li className="flex gap-4 items-center">
       <span className="icon-badge bg-sky/20 text-sky">
@@ -302,222 +261,92 @@ export default function AboutPage() {
       <span>Desarrollo frontend web corporativo</span>
     </li>
 
-    <li className="flex gap-4 items-center">
-      <span className="icon-badge bg-teal/20 text-teal">
-        <Users size={18} />
-      </span>
-      <span>Coordinación virtual de tareas</span>
-    </li>
-
-    <li className="flex gap-4 items-center">
-      <span className="icon-badge bg-success/20 text-success">
-        <CheckCircle2 size={18} />
-      </span>
-      <span>Trabajo con requerimientos reales</span>
-    </li>
-  </ul>
-</div>
-
-
+              <li className="flex gap-4 items-center">
+                <span className="icon-badge bg-green-100 text-green-600">
+                  <CheckCircle2 size={18} />
+                </span>
+                <span>Trabajo con requerimientos reales</span>
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* ================= IDIOMAS & INTERESES ================= */}
         <section className="grid md:grid-cols-2 gap-10">
+          <div className="card space-y-4">
+            <h3 className="font-title text-secondary text-lg">Idiomas</h3>
+            <ul className="space-y-3 text-sm text-muted">
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-primary/10 text-primary">🇵🇪</span>
+                <span><strong className="text-dark">Español</strong> — Nativo</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-sky-100 text-sky-600">🇺🇸</span>
+                <span><strong className="text-dark">Inglés</strong> — Intermedio</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-teal-100 text-teal-600">🇮🇹</span>
+                <span><strong className="text-dark">Italiano</strong> — Básico</span>
+              </li>
+            </ul>
+          </div>
 
           <div className="card space-y-4">
-  <h3 className="font-title text-secondary text-lg">
-    Idiomas
-  </h3>
-
-  <ul className="space-y-3 text-sm text-muted">
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-primary/10 text-primary">
-        🇵🇪
-      </span>
-      <span>
-        <strong className="text-dark">Español</strong> — Nativo
-      </span>
-    </li>
-
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-sky/20 text-sky">
-        🇺🇸
-      </span>
-      <span>
-        <strong className="text-dark">Inglés</strong> — Intermedio
-      </span>
-    </li>
-
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-teal/20 text-teal">
-        🇮🇹
-      </span>
-      <span>
-        <strong className="text-dark">Italiano</strong> — Básico
-      </span>
-    </li>
-  </ul>
-</div>
-
-
-          <div className="card space-y-4">
-  <h3 className="font-title text-secondary text-lg">
-    Intereses
-  </h3>
-
-  <ul className="space-y-3 text-sm text-muted">
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-violet/20 text-violet">
-        <Sparkles size={18} />
-      </span>
-      <span>Diseño de experiencias digitales</span>
-    </li>
-
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-sky/20 text-sky">
-        <Search size={18} />
-      </span>
-      <span>Investigación de usuarios</span>
-    </li>
-
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-fuchsia/20 text-fuchsia">
-        <Palette size={18} />
-      </span>
-      <span>Branding y diseño visual</span>
-    </li>
-
-    <li className="flex items-center gap-4">
-      <span className="icon-badge bg-teal/20 text-teal">
-        <Zap size={18} />
-      </span>
-      <span>Aprendizaje continuo</span>
-    </li>
-  </ul>
-</div>
-
-
+            <h3 className="font-title text-secondary text-lg">Intereses</h3>
+            <ul className="space-y-3 text-sm text-muted">
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-violet-100 text-violet-600"><Sparkles size={18} /></span>
+                <span>Diseño de experiencias digitales</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-sky-100 text-sky-600"><Search size={18} /></span>
+                <span>Investigación de usuarios</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-fuchsia-100 text-fuchsia-600"><Palette size={18} /></span>
+                <span>Branding y diseño visual</span>
+              </li>
+              <li className="flex items-center gap-4">
+                <span className="icon-badge bg-teal-100 text-teal-600"><Zap size={18} /></span>
+                <span>Aprendizaje continuo</span>
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* ================= SOFTWARE & HERRAMIENTAS ================= */}
         <section className="grid md:grid-cols-2 gap-10">
+          <div className="card space-y-5">
+            <h3 className="font-title text-secondary text-lg">Software</h3>
+            <div className="flex flex-wrap gap-3">
+              {SOFTWARE.map((tool) => (
+                <span key={tool.name} className={`tool-chip ${tool.bg} ${tool.text}`}>
+                  <Image src={tool.icon} alt={tool.name} width={24} height={24} className="tool-icon" />
+                  {tool.name}
+                </span>
+              ))}
+            </div>
+          </div>
 
           <div className="card space-y-5">
-  <h3 className="font-title text-secondary text-lg">
-    Software
-  </h3>
-
-  <div className="flex flex-wrap gap-3">
-    <span className="tool-chip bg-[#E8F1FF] text-[#1A73E8] ">
-      <img src="/figma.png" alt="Figma" className="tool-icon"/>
-      Figma
-    </span>
-
-    <span className="tool-chip bg-[#FFF3E0] text-[#FB8C00]">
-      <img src="/Illustrato.png" alt="Illustrator" className="tool-icon"/>
-      Illustrator
-    </span>
-
-    <span className="tool-chip bg-[#E0F2F1] text-[#00695C]">
-      <img src="/miro.png" alt="Miro" className="tool-icon"/>
-      Miro
-    </span>
-
-    <span className="tool-chip bg-[#F3F4F6] text-[#111827]">
-      <img src="/visual.png" alt="VS Code" className="tool-icon"/>
-      Visual Studio Code
-    </span>
-
-    <span className="tool-chip bg-[#E0F2FE] text-[#0284C7]">
-      <img src="/wordpress.png" alt="WordPress" className="tool-icon"/>
-      WordPress
-    </span>
-
-    <span className="tool-chip bg-[#F5F3FF] text-[#4F46E5]">
-      <img src="/notion.png" alt="Notion" className="tool-icon" />
-      Notion
-    </span>
-
-    <span className="tool-chip bg-[#ECFDF5] text-[#047857]">
-      <img src="/excel.png" alt="Excel" className="tool-icon"/>
-      Excel
-    </span>
-
-    <span className="tool-chip bg-[#FFF7ED] text-[#EA580C]">
-      <img src="/Power_BI.png" alt="Power BI" className="tool-icon"/>
-      Power BI
-    </span>
-  </div>
-</div>
-
-
-
-
-         <div className="card space-y-5">
-  <h3 className="font-title text-secondary text-lg">
-    Herramientas y Tecnología
-  </h3>
-
-  <div className="flex flex-wrap gap-x-4 gap-y-3 text-sm">
-    <span className="tool-chip bg-[#FFF7ED] text-[#E34F26]">
-      <img src="/html.png" alt="HTML" className="tool-icon" />
-      HTML
-    </span>
-
-    <span className="tool-chip bg-[#ECFEFF] text-[#0EA5E9]">
-      <img src="/css.png" alt="CSS" className="tool-icon" />
-      CSS
-    </span>
-
-    <span className="tool-chip bg-[#FEF3C7] text-[#F59E0B]">
-      <img src="/javascript.png" alt="JavaScript" className="tool-icon" />
-      JavaScript
-    </span>
-
-    <span className="tool-chip bg-[#EEF2FF] text-[#6366F1]">
-      <img src="/typescript.jpg" alt="TypeScript" className="tool-icon" />
-      TypeScript
-    </span>
-
-    <span className="tool-chip bg-[#ECFDF5] text-[#16A34A]">
-      <img src="/React.jpg" alt="React" className="tool-icon" />
-      React
-    </span>
-
-    <span className="tool-chip bg-[#F0F9FF] text-[#0284C7]">
-      <img src="/Tailwind.jpg" alt="Tailwind" className="tool-icon" />
-      Tailwind
-    </span>
-
-    <span className="tool-chip bg-[#F3F4F6] text-[#111827]">
-      <img src="/node.png" alt="Node.js" className="tool-icon" />
-      Node.js
-    </span>
-
-    <span className="tool-chip bg-[#ECFEFF] text-[#0891B2]">
-      <img src="/mongo.png" alt="MongoDB" className="tool-icon" />
-      MongoDB
-    </span>
-
-    <span className="tool-chip bg-[#EFF6FF] text-[#2563EB]">
-      <img src="/MySQL.jpg" alt="MySQL" className="tool-icon" />
-      MySQL
-    </span>
-  </div>
-
-
-</div>
-
-
+            <h3 className="font-title text-secondary text-lg">Herramientas y Tecnología</h3>
+            <div className="flex flex-wrap gap-x-4 gap-y-3 text-sm">
+              {TECH_STACK.map((tech) => (
+                <span key={tech.name} className={`tool-chip ${tech.bg} ${tech.text}`}>
+                  <Image src={tech.icon} alt={tech.name} width={24} height={24} className="tool-icon" />
+                  {tech.name}
+                </span>
+              ))}
+            </div>
+          </div>
         </section>
 
         {/* ================= CTA ================= */}
         <div className="text-center">
-          <a href="/portfolio" className="btn-primary">
-            Ver Portafolio
+          <a href="/portafolio" className="btn-primary">
+            Ver proyectos reales
           </a>
         </div>
-
       </div>
     </main>
   );

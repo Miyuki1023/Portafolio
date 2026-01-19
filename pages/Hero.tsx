@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import ContactModal from "@/component/contact";
 import ProjectCard from "@/component/ProjectCard";
 import { projects } from "@/data/projects";
@@ -65,10 +66,20 @@ export default function HomePage() {
   return (
 <main className="bg-[var(--color-bg-main)] w-full overflow-x-hidden relative h-full">
 
-     <section className="relative overflow-hidden px-6 py-16">
+<section
+  className="
+    relative
+    overflow-hidden
+    px-6
+    sm:px-32
+    xl:px-24
+    py-20
+    sm:py-32
+    xl:py-3
+  "
+>
         <div className="max-w-6xl mx-auto grid gap-14 items-center lg:grid-cols-2">
       
-          {/* TEXTO */}
           <motion.div
             variants={ANIMATIONS.container}
             initial="hidden"
@@ -104,7 +115,7 @@ export default function HomePage() {
               className="flex flex-col sm:flex-row gap-4 pt-4 justify-center lg:justify-start"
             >
               <Link
-                href="/portfolio"
+              href="/portafolio"
                 className="btn-outline inline-flex items-center gap-2"
               >
                 Ver portafolio
@@ -122,10 +133,14 @@ export default function HomePage() {
             animate="visible"
             className="hidden md:flex justify-center"
           >
-            <img
-  src="/hero-visual.png"
-    className="w-full max-w-md lg:max-w-lg object-contain mix-blend-multiply"
-/>
+            <Image
+              src="/hero-visual.png"
+              alt="Ilustración abstracta representando diseño UX/UI"
+              width={600}
+              height={600}
+              priority // Carga prioritaria para mejorar LCP (Core Web Vitals)
+              className="w-full max-w-md lg:max-w-lg object-contain mix-blend-multiply"
+            />
 
           </motion.div>
       
@@ -260,9 +275,11 @@ export default function HomePage() {
               {/* Contenedor relativo para la composición */}
               <div className="relative z-10 hidden lg:block">
                 {/* Imagen Principal */}
-                <img
+                <Image
                   src="/process.png"
-                  alt="Ilustración de proceso UX UI"
+                  alt="Gráfico del proceso de diseño: Research, Design, Dev"
+                  width={500}
+                  height={500}
                   className="relative max-w-md w-full rounded-[2.5rem]
                             shadow-2xl border border-white/50"
                 />
@@ -370,7 +387,7 @@ export default function HomePage() {
                  {/* CTA Desktop */}
                  <motion.div variants={ANIMATIONS.item} className="hidden md:flex justify-end items-center">
                    <Link
-                     href="/portafolio"
+              href="/portafolio"
                      className="group relative inline-flex items-center gap-3 px-8 py-4 
                                 rounded-full border border-[var(--color-soft)]/30
                                 bg-[var(--color-soft)]/5 backdrop-blur-sm
@@ -381,7 +398,7 @@ export default function HomePage() {
                      <span className="text-sm font-medium text-[var(--color-soft)] 
                                       transition-colors duration-300 
                                       group-hover:text-[var(--color-secondary)]">
-                       Ver portafolio completo
+                       Ver portafolio 
                      </span>
                      
                      <ArrowRight 

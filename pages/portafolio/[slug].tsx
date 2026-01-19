@@ -12,9 +12,7 @@ const fadeUp = {
 
 const stagger = {
   visible: {
-    transition: {
-      staggerChildren: 0.15,
-    },
+    transition: { staggerChildren: 0.15 },
   },
 };
 
@@ -24,10 +22,12 @@ export default function ProjectDetail({ project }: any) {
   if (!project) return null;
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg-main)] py-32">
-      <div className="max-w-7xl mx-auto px-6 space-y-48">
+    <main className="min-h-screen bg-[var(--color-bg-main)]">
+      <div className="max-w-7xl mx-auto px-6 space-y-64 py-32">
 
-        {/* ================= HERO ================= */}
+        {/* ================================================= */}
+        {/* HERO — IMPACTO VISUAL (como la imagen) */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           animate="visible"
@@ -39,11 +39,11 @@ export default function ProjectDetail({ project }: any) {
               UX / UI Case Study
             </span>
 
-            <h1 className="font-title text-5xl xl:text-6xl leading-tight">
+            <h1 className="font-title text-6xl xl:text-7xl leading-tight">
               {project.title}
             </h1>
 
-            <p className="text-lg text-muted max-w-xl">
+            <p className="text-xl text-muted max-w-xl">
               {project.description}
             </p>
 
@@ -61,7 +61,7 @@ export default function ProjectDetail({ project }: any) {
 
           <motion.div
             variants={fadeUp}
-            className="relative h-[520px] rounded-[32px] overflow-hidden shadow-soft"
+            className="relative h-[560px] rounded-[40px] overflow-hidden shadow-soft"
           >
             <Image
               src={project.cover}
@@ -73,67 +73,86 @@ export default function ProjectDetail({ project }: any) {
           </motion.div>
         </motion.section>
 
-        {/* ================= CONTEXTO ================= */}
+        {/* ================================================= */}
+        {/* METADATA / HIGHLIGHTS */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          className="grid md:grid-cols-3 gap-16"
+          className="grid sm:grid-cols-3 gap-16"
         >
-          <motion.div variants={fadeUp} className="space-y-3">
-            <h3 className="text-sm uppercase tracking-widest text-secondary">
+          <motion.div variants={fadeUp}>
+            <h4 className="text-xs uppercase tracking-widest text-secondary">
               Contexto
-            </h3>
-            <p className="text-muted">{project.overview.context}</p>
+            </h4>
+            <p className="text-muted mt-2">
+              {project.overview.context}
+            </p>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="space-y-3">
-            <h3 className="text-sm uppercase tracking-widest text-secondary">
+          <motion.div variants={fadeUp}>
+            <h4 className="text-xs uppercase tracking-widest text-secondary">
               Objetivo
-            </h3>
-            <p className="text-muted">{project.overview.goal}</p>
+            </h4>
+            <p className="text-muted mt-2">
+              {project.overview.goal}
+            </p>
           </motion.div>
         </motion.section>
 
-        {/* ================= PROBLEMA ================= */}
+        {/* ================================================= */}
+        {/* PROBLEMA — DEEP DIVE */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="max-w-3xl space-y-6"
+          className="max-w-4xl space-y-8"
         >
-          <h2 className="font-title text-3xl">El Problema</h2>
+          <h2 className="font-title text-4xl">
+            Deep dive into the User Mindset
+          </h2>
+
           <p className="text-muted text-lg">
             {project.overview.problemStatement}
           </p>
         </motion.section>
 
-        {/* ================= HIPÓTESIS ================= */}
+        {/* ================================================= */}
+        {/* HIPÓTESIS */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="max-w-3xl space-y-6"
+          className="max-w-4xl space-y-6"
         >
-          <h2 className="font-title text-3xl">Hipótesis Inicial</h2>
+          <h2 className="font-title text-3xl">
+            Hipótesis Inicial
+          </h2>
           <p className="text-muted">
             {project.research.hypothesis}
           </p>
         </motion.section>
 
-        {/* ================= UX RESEARCH ================= */}
+        {/* ================================================= */}
+        {/* UX RESEARCH + PERSONA */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={stagger}
-          className="space-y-20"
+          className="space-y-32"
         >
           <motion.div variants={fadeUp} className="max-w-3xl space-y-6">
-            <h2 className="font-title text-3xl">UX Research</h2>
+            <h2 className="font-title text-3xl">
+              UX Research
+            </h2>
             <p className="text-muted">
               {project.research.why}
             </p>
@@ -142,10 +161,10 @@ export default function ProjectDetail({ project }: any) {
           {/* Persona */}
           <motion.div
             variants={fadeUp}
-            className="grid md:grid-cols-2 gap-16 items-center"
+            className="grid lg:grid-cols-2 gap-20 items-center"
           >
             <div className="space-y-4">
-              <h3 className="text-xl font-medium">
+              <h3 className="text-2xl font-medium">
                 {project.research.persona.name}
               </h3>
               <p className="text-muted">
@@ -157,7 +176,7 @@ export default function ProjectDetail({ project }: any) {
               </p>
             </div>
 
-            <div className="relative h-[300px] rounded-2xl overflow-hidden">
+            <div className="relative h-[360px] rounded-3xl overflow-hidden">
               <Image
                 src={project.research.persona.img}
                 alt="User Persona"
@@ -170,7 +189,7 @@ export default function ProjectDetail({ project }: any) {
           {/* Journey */}
           <motion.div
             variants={stagger}
-            className="grid sm:grid-cols-3 gap-10"
+            className="grid sm:grid-cols-3 gap-12"
           >
             {project.research.journey.map((step: any) => (
               <motion.div
@@ -178,23 +197,34 @@ export default function ProjectDetail({ project }: any) {
                 variants={fadeUp}
                 className="space-y-3"
               >
-                <h4 className="font-medium">{step.stage}</h4>
-                <p className="text-muted text-sm">{step.action}</p>
-                <p className="text-sm text-red-500">{step.pain}</p>
+                <h4 className="font-medium">
+                  {step.stage}
+                </h4>
+                <p className="text-muted text-sm">
+                  {step.action}
+                </p>
+                <p className="text-sm text-red-500">
+                  {step.pain}
+                </p>
               </motion.div>
             ))}
           </motion.div>
         </motion.section>
 
-        {/* ================= INSIGHTS ================= */}
+        {/* ================================================= */}
+        {/* INSIGHTS */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="max-w-4xl space-y-8"
+          className="max-w-4xl space-y-10"
         >
-          <h2 className="font-title text-3xl">Insights Clave</h2>
+          <h2 className="font-title text-3xl">
+            Insights Clave
+          </h2>
+
           <ul className="space-y-4">
             {project.research.keyInsights.map((insight: string) => (
               <li
@@ -207,38 +237,19 @@ export default function ProjectDetail({ project }: any) {
           </ul>
         </motion.section>
 
-        {/* ================= PROCESO ================= */}
+        {/* ================================================= */}
+        {/* SOLUCIÓN */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
           variants={fadeUp}
-          className="max-w-4xl space-y-8"
+          className="max-w-4xl space-y-12"
         >
-          <h2 className="font-title text-3xl">Proceso de Diseño</h2>
-          <p className="text-muted">{project.process.context}</p>
-
-          <ul className="space-y-4">
-            {project.process.steps.map((step: string) => (
-              <li
-                key={step}
-                className="pl-6 border-l-2 border-secondary text-muted"
-              >
-                {step}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
-
-        {/* ================= SOLUCIÓN ================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="max-w-4xl space-y-10"
-        >
-          <h2 className="font-title text-3xl">Solución UX/UI</h2>
+          <h2 className="font-title text-4xl">
+            The Aesthetic Solution
+          </h2>
 
           <ul className="space-y-6">
             {project.solution.uxStrategy.map((item: string) => (
@@ -250,7 +261,9 @@ export default function ProjectDetail({ project }: any) {
           </ul>
         </motion.section>
 
-        {/* ================= IMPACTO ================= */}
+        {/* ================================================= */}
+        {/* IMPACTO */}
+        {/* ================================================= */}
         <motion.section
           initial="hidden"
           whileInView="visible"
@@ -258,7 +271,9 @@ export default function ProjectDetail({ project }: any) {
           variants={fadeUp}
           className="max-w-4xl space-y-8"
         >
-          <h2 className="font-title text-3xl">Impacto & Aprendizajes</h2>
+          <h2 className="font-title text-3xl">
+            Impacto & Aprendizajes
+          </h2>
 
           <ul className="space-y-4">
             {project.outcomes.impact.map((item: string) => (

@@ -16,8 +16,6 @@ export default function Carga({ onComplete }: { onComplete?: () => void }) {
     return () => clearTimeout(timer);
   }, [onComplete]);
 
-  // UX Senior: Bloquear el scroll mientras carga para evitar que el usuario baje
-  // antes de ver la animación de entrada del Hero.
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {

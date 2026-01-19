@@ -1,4 +1,55 @@
-export const projects = [
+export interface Project {
+  id: number;
+  slug: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  cover: string;
+  role: string;
+  duration: string;
+  description: string;
+  tools: string[];
+  overview: {
+    context: string;
+    problemStatement: string;
+    goal: string;
+  };
+  research: {
+    hypothesis: string;
+    why: string;
+    persona: {
+      name: string;
+      age: number;
+      profile: string;
+      location: string;
+      context: string;
+      motivations: string[];
+      frustrations: string[];
+      img: string;
+    };
+    journey: { stage: string; action: string; pain: string }[];
+    keyInsights: string[];
+  };
+  architecture: {
+    sitemap: string[];
+    navigationGoals: string[];
+  };
+  process: {
+    context: string;
+    steps: string[];
+  };
+  solution: {
+    uxStrategy: string[];
+    visualDecisions: { colors: string; imagery: string };
+    nextStepsNote: string;
+  };
+  outcomes: {
+    impact: string[];
+    learnings: string[];
+  };
+}
+
+export const projects: Project[] = [
   {
     id: 1,
     slug: "molina-producciones-ux-case",
@@ -665,8 +716,4 @@ export const projects = [
     ],
   },
 }
-
-
 ];
-
-export type Project = (typeof projects)[number];
