@@ -1,307 +1,649 @@
 import { projects } from "@/data/projects";
+import type { Project } from "@/data/projects";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import Head from "next/head";
+import Link from "next/link";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { Agbalumo } from "next/font/google";
+import { ArrowRight, FileText, Target, User } from "lucide-react";
+import { useState, useRef, useEffect } from "react";
 
-/* ================= ANIMATIONS ================= */
+/* ================= FUENTE ================= */
 
-const fadeUp = {
+const agbalumo = Agbalumo({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+/* ================= ANIMACIONES ================= */
+
+const animacionFadeUp = {
   hidden: { opacity: 0, y: 40 },
   visible: { opacity: 1, y: 0 },
 };
 
-const stagger = {
+const animacionStagger = {
   visible: {
     transition: { staggerChildren: 0.15 },
   },
 };
 
-/* ================= PAGE ================= */
 
-export default function ProjectDetail({ project }: any) {
+
+/* ================= TIPOS ================= */
+
+interface Props {
+  project: Project;
+  nextProject: Project;
+}
+
+/* ================= PÁGINA ================= */
+
+export default function DetalleProyecto({ project, nextProject }: Props) {
+  const solutionRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: solutionRef,
+    offset: ["start start", "end end"],
+  });
+  const [currentMockup, setCurrentMockup] = useState(0);
+  const [isDesktop, setIsDesktop] = useState(true);
+
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsDesktop(window.innerWidth >= 1024); // Tailwind's lg breakpoint
+    };
+    checkScreenSize(); // Run on mount
+    window.addEventListener("resize", checkScreenSize);
+    return () => window.removeEventListener("resize", checkScreenSize);
+  }, []);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (!isDesktop) {
+      // On mobile, disable the scroll-based animation and show the first state.
+      setCurrentMockup(0);
+      return;
+    }
+    if (latest < 0.25) setCurrentMockup(0);
+    else if (latest < 0.5) setCurrentMockup(1);
+    else if (latest < 0.75) setCurrentMockup(2);
+    else setCurrentMockup(3);
+  });
+
+  
+  
   if (!project) return null;
 
   return (
-    <main className="min-h-screen bg-[var(--color-bg-main)]">
-      <div className="max-w-7xl mx-auto px-6 space-y-64 py-32">
+    <>
+      <Head>
+        <title>{project.title} | Miyuki Panduro</title>
+        <meta name="description" content={project.description} />
+      </Head>
+
+      <main className="bg-[var(--color-bg-main)] text-[#222] overflow-x-hidden">
 
         {/* ================================================= */}
-        {/* HERO — IMPACTO VISUAL (como la imagen) */}
+        {/* HERO — PORTADA EDITORIAL */}
         {/* ================================================= */}
         <motion.section
           initial="hidden"
           animate="visible"
-          variants={stagger}
-          className="grid lg:grid-cols-2 gap-24 items-center"
+          variants={animacionStagger}
+          className="relative bg-[var(--color-secondary)] text-white"
         >
-          <motion.div variants={fadeUp} className="space-y-10">
-            <span className="uppercase tracking-widest text-sm text-secondary">
-              UX / UI Case Study
-            </span>
+          <div className="max-w-7xl mx-auto px-6 pt-32 pb-48 grid lg:grid-cols-2 gap-16 md:gap-24 items-center">
 
-            <h1 className="font-title text-6xl xl:text-7xl leading-tight">
-              {project.title}
-            </h1>
+            {/* TEXTO */}
+            <motion.div variants={animacionFadeUp} className="space-y-10">
+              <span className="uppercase tracking-[0.3em] text-sm text-[var(--color-accent)]">
+                Caso de Estudio UX / UI · 2025
+              </span>
 
-            <p className="text-xl text-muted max-w-xl">
-              {project.description}
-            </p>
+              <h1
+                className={`
+                  ${agbalumo.className}
+                  leading-[0.9]
+                  text-[clamp(4.5rem,9vw,10rem)]
+                  sm:text-[clamp(5.5rem,10vw,11rem)]
+                  lg:text-[clamp(7rem,11vw,13rem)]
+                  xl:text-[15rem]
+                `}
+                style={{ color: "var(--color-bg-main)" }}
+              >
+                {project.title}
+              </h1>
 
-            <div className="flex flex-wrap gap-3">
-              {project.tools.map((tool: string) => (
-                <span
-                  key={tool}
-                  className="px-4 py-1 text-xs rounded-full bg-[var(--color-bg-secondary)]"
-                >
-                  {tool}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            variants={fadeUp}
-            className="relative h-[560px] rounded-[40px] overflow-hidden shadow-soft"
-          >
-            <Image
-              src={project.cover}
-              alt={project.title}
-              fill
-              priority
-              className="object-cover"
-            />
-          </motion.div>
-        </motion.section>
-
-        {/* ================================================= */}
-        {/* METADATA / HIGHLIGHTS */}
-        {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-          className="grid sm:grid-cols-3 gap-16"
-        >
-          <motion.div variants={fadeUp}>
-            <h4 className="text-xs uppercase tracking-widest text-secondary">
-              Contexto
-            </h4>
-            <p className="text-muted mt-2">
-              {project.overview.context}
-            </p>
-          </motion.div>
-
-          <motion.div variants={fadeUp}>
-            <h4 className="text-xs uppercase tracking-widest text-secondary">
-              Objetivo
-            </h4>
-            <p className="text-muted mt-2">
-              {project.overview.goal}
-            </p>
-          </motion.div>
-        </motion.section>
-
-        {/* ================================================= */}
-        {/* PROBLEMA — DEEP DIVE */}
-        {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="max-w-4xl space-y-8"
-        >
-          <h2 className="font-title text-4xl">
-            Deep dive into the User Mindset
-          </h2>
-
-          <p className="text-muted text-lg">
-            {project.overview.problemStatement}
-          </p>
-        </motion.section>
-
-        {/* ================================================= */}
-        {/* HIPÓTESIS */}
-        {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="max-w-4xl space-y-6"
-        >
-          <h2 className="font-title text-3xl">
-            Hipótesis Inicial
-          </h2>
-          <p className="text-muted">
-            {project.research.hypothesis}
-          </p>
-        </motion.section>
-
-        {/* ================================================= */}
-        {/* UX RESEARCH + PERSONA */}
-        {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={stagger}
-          className="space-y-32"
-        >
-          <motion.div variants={fadeUp} className="max-w-3xl space-y-6">
-            <h2 className="font-title text-3xl">
-              UX Research
-            </h2>
-            <p className="text-muted">
-              {project.research.why}
-            </p>
-          </motion.div>
-
-          {/* Persona */}
-          <motion.div
-            variants={fadeUp}
-            className="grid lg:grid-cols-2 gap-20 items-center"
-          >
-            <div className="space-y-4">
-              <h3 className="text-2xl font-medium">
-                {project.research.persona.name}
-              </h3>
-              <p className="text-muted">
-                {project.research.persona.profile} ·{" "}
-                {project.research.persona.location}
+              <p
+                className="mt-6 text-lg sm:text-xl lg:text-2xl max-w-2xl opacity-90"
+                style={{ color: "var(--color-bg-main)" }}
+              >
+                {project.description}
               </p>
-              <p className="text-muted">
-                {project.research.persona.context}
-              </p>
-            </div>
 
-            <div className="relative h-[360px] rounded-3xl overflow-hidden">
+              <div className="flex flex-wrap gap-3">
+                {project.tools.map((tool) => (
+                  <span
+                    key={tool}
+                    className="px-4 py-1 text-xs rounded-full bg-white/10 backdrop-blur"
+                  >
+                    {tool}
+                  </span>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* MOCKUP */}
+            <motion.div
+              variants={animacionFadeUp}
+              className="relative h-[560px] w-full rounded-[32px] border-8 border-white/20 overflow-hidden shadow-2xl"
+            >
               <Image
-                src={project.research.persona.img}
-                alt="User Persona"
+                src={project.cover}
+                alt={project.title}
                 fill
+                priority
                 className="object-cover"
               />
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
+        </motion.section>
 
-          {/* Journey */}
-          <motion.div
-            variants={stagger}
-            className="grid sm:grid-cols-3 gap-12"
-          >
-            {project.research.journey.map((step: any) => (
-              <motion.div
-                key={step.stage}
-                variants={fadeUp}
-                className="space-y-3"
+        {/* ================================================= */}
+        {/* TARJETAS DE CONTEXTO */}
+        {/* ================================================= */}
+        <section className="relative -mt-24 z-10 px-2">
+          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-6">
+            {[
+              { 
+                titulo: "Contexto", 
+                contenido: project.overview.context,
+                icon: <FileText strokeWidth={1.5} size={28} />
+              },
+              { 
+                titulo: "Objetivo", 
+                contenido: project.overview.goal,
+                icon: <Target strokeWidth={1.5} size={28} />
+              },
+              { 
+                titulo: "Rol", 
+                contenido: project.role,
+                icon: <User strokeWidth={1.5} size={28} />
+              },
+            ].map((item, index) => (
+              <motion.div 
+                key={item.titulo}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1, duration: 0.5 }}
+                viewport={{ once: true }}
+                className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-black/5 flex flex-col items-start hover:-translate-y-2 transition-all duration-300"
               >
-                <h4 className="font-medium">
-                  {step.stage}
-                </h4>
-                <p className="text-muted text-sm">
-                  {step.action}
-                </p>
-                <p className="text-sm text-red-500">
-                  {step.pain}
+                <div className="p-4 rounded-2xl bg-[var(--color-bg-main)] text-[var(--color-secondary)] mb-6">
+                  {item.icon}
+                </div>
+                
+                <h3 className="font-title text-2xl text-[var(--color-secondary)] mb-4">
+                  {item.titulo}
+                </h3>
+                <p className="text-muted text-base leading-relaxed">
+                  {item.contenido}
                 </p>
               </motion.div>
             ))}
-          </motion.div>
-        </motion.section>
+          </div>
+        </section>
 
         {/* ================================================= */}
-        {/* INSIGHTS */}
+        {/* PROCESO (NUEVA SECCIÓN) */}
         {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="max-w-4xl space-y-10"
-        >
-          <h2 className="font-title text-3xl">
-            Insights Clave
-          </h2>
+        <section className="py-24 px-6 overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-start">
+              
+              {/* COLUMNA IZQUIERDA: Sticky Context */}
+              <div className="space-y-10 md:sticky md:top-32">
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-secondary)]/5 text-[var(--color-secondary)] text-xs font-bold tracking-widest uppercase mb-6">
+                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-secondary)]" />
+                    Metodología
+                  </span>
 
-          <ul className="space-y-4">
-            {project.research.keyInsights.map((insight: string) => (
-              <li
-                key={insight}
-                className="pl-6 border-l-2 border-secondary text-muted"
-              >
-                {insight}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
+                  <h2 className="font-title text-4xl md:text-5xl lg:text-6xl text-[var(--color-secondary)] leading-[0.9] py-2">
+                    El Proceso <br />
+                    <span className="text-3xl md:text-4xl text-muted font-normal italic font-sans py-2">
+                      Creativo & Técnico
+                    </span>
+                  </h2>
+                </motion.div>
 
-        {/* ================================================= */}
-        {/* SOLUCIÓN */}
-        {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="max-w-4xl space-y-12"
-        >
-          <h2 className="font-title text-4xl">
-            The Aesthetic Solution
-          </h2>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  whileInView={{ opacity: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2, duration: 0.6 }}
+                  className="relative pl-6 border-l-2 border-[var(--color-secondary)]/10"
+                >
+                  <p className="text-muted text-lg leading-relaxed">
+                    {project.process.context}
+                  </p>
+                </motion.div>
 
-          <ul className="space-y-6">
-            {project.solution.uxStrategy.map((item: string) => (
-              <li key={item} className="flex gap-4 text-muted">
-                <span className="mt-2 w-2 h-2 rounded-full bg-secondary" />
-                {item}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
+                {/* Decoración visual animada */}
+                <motion.div
+                  initial={{ scaleX: 0, originX: 0 }}
+                  whileInView={{ scaleX: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.4, duration: 0.8, ease: "circOut" }}
+                  className="hidden md:block w-24 h-1 bg-gradient-to-r from-[var(--color-secondary)] to-transparent rounded-full opacity-30"
+                />
+              </div>
+              
+              <ul className="space-y-8 relative">
+                
+                <div className="absolute left-[1.65rem] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[var(--color-secondary)]/5 via-[var(--color-secondary)]/20 to-[var(--color-secondary)]/5 md:hidden" />
 
-        {/* ================================================= */}
-        {/* IMPACTO */}
-        {/* ================================================= */}
-        <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeUp}
-          className="max-w-4xl space-y-8"
-        >
-          <h2 className="font-title text-3xl">
-            Impacto & Aprendizajes
-          </h2>
+                {project.process.steps.map((step, index) => {
+                  const curveOffsets = [
+                    "md:ml-0 lg:ml-0",
+                    "md:ml-12 lg:ml-24",
+                    "md:ml-24 lg:ml-48",
+                    "md:ml-24 lg:ml-48",
+                    "md:ml-12 lg:ml-24",
+                    "md:ml-0 lg:ml-0",
+                  ];
+                  const offset = curveOffsets[index] || "md:ml-0 lg:ml-0";
 
-          <ul className="space-y-4">
-            {project.outcomes.impact.map((item: string) => (
-              <li
-                key={item}
-                className="pl-6 border-l-2 border-secondary text-muted"
-              >
-                {item}
-              </li>
-            ))}
-          </ul>
-        </motion.section>
+                  return (
+                    <li
+                      key={step}
+                      className={`
+                        group flex gap-6 items-start relative
+                        transition-all duration-500 ease-out
+                        ${offset}
+                      `}
+                    >
+                     
+                      <div
+                        className="
+                          relative z-10
+                          flex-shrink-0 w-14 h-14
+                          rounded-full border-2 border-[var(--color-secondary)]/10
+                          bg-white
+                          flex items-center justify-center
+                          font-title text-xl font-bold text-[var(--color-secondary)]
+                          shadow-[0_4px_20px_rgba(0,0,0,0.05)]
+                          transition-all duration-300
+                          group-hover:scale-110
+                          group-hover:border-[var(--color-secondary)]
+                          group-hover:bg-[var(--color-secondary)]
+                          group-hover:text-white
+                          group-hover:shadow-xl
+                        "
+                      >
+                        {index + 1}
+                      </div>
+
+                      <div className="
+                        flex-1 pt-1 p-6 rounded-3xl 
+                        border border-transparent 
+                        transition-all duration-300 
+                        hover:bg-white hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:border-[var(--color-secondary)]/5
+                        group-hover:-translate-y-1
+                      ">
+                        <p className="text-lg text-muted leading-relaxed group-hover:text-[var(--color-dark)] transition-colors">
+                          {step}
+                        </p>
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+
+            </div>
+          </div>
+        </section>
+{/* ================================================= */}
+{/* ANÁLISIS DEL USUARIO */}
+{/* ================================================= */}
+<section className="py-32 px-6 lg:px-40">
+  <div className="max-w-[1440px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-20">
+
+    {/* COLUMNA IZQUIERDA — TEXTO + INSIGHTS */}
+    <div className="lg:col-span-5">
+      <div className="sticky top-32">
+
+        <h2 className="font-title text-5xl md:text-7xl leading-tight py-2">
+          Análisis <br />
+          <span className="italic text-[var(--color-secondary)]">
+            profundo
+          </span>{" "}
+          del usuario
+        </h2>
+
+        <p className="mt-8 text-lg text-muted max-w-md leading-relaxed">
+          {project.overview.problemStatement}
+        </p>
+
+        {/* INSIGHTS DESTACADOS */}
+        <div className="mt-12 space-y-6">
+          {project.research.keyInsights.slice(0, 2).map((insight, index) => (
+            <div
+              key={index}
+              className="flex items-start gap-4 p-6 border-l-2 border-[var(--color-accent)] bg-white/60 backdrop-blur-sm"
+            >
+              <div>
+                <h4 className="font-bold text-lg mb-1 italic">
+                  Insight clave
+                </h4>
+                <p className="text-sm text-gray-500 leading-relaxed">
+                  {insight}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
 
       </div>
-    </main>
+    </div>
+
+    {/* COLUMNA DERECHA — PERSONA */}
+    <div className="lg:col-span-7">
+      <div className="bg-white p-12 rounded-sm shadow-xl relative overflow-hidden">
+
+        {/* DETALLE DECORATIVO */}
+        <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-secondary)] opacity-5 -mr-16 -mt-16 rounded-full" />
+
+        <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
+
+          {/* AVATAR */}
+          <div
+            className="w-40 h-40 rounded-full bg-cover bg-center border-4 border-[var(--color-bg-main)] shadow-lg flex-shrink-0"
+            style={{
+              backgroundImage: `url(${project.research.persona.img})`,
+            }}
+          />
+
+          {/* INFO PERSONA */}
+          <div className="flex-1">
+            <span className="text-[var(--color-secondary)] font-bold text-xs uppercase tracking-widest">
+              Persona Profile
+            </span>
+
+            <h3 className="font-title text-4xl font-bold mt-2">
+              {project.research.persona.name}
+            </h3>
+
+            <p className="text-gray-400 italic mb-6">
+              {project.research.persona.profile} ·{" "}
+              {project.research.persona.location}
+            </p>
+
+            <p className="text-sm text-muted leading-relaxed mb-10">
+              {project.research.persona.context}
+            </p>
+
+            {/* MOTIVACIONES / FRUSTRACIONES */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+              {/* MOTIVACIONES */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+                  Motivaciones
+                </h4>
+                <ul className="text-sm space-y-3">
+                  {project.research.persona.motivations?.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span>•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* FRUSTRACIONES */}
+              <div>
+                <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
+                  Frustraciones
+                </h4>
+                <ul className="text-sm space-y-3">
+                  {project.research.persona.frustrations?.map((item) => (
+                    <li key={item} className="flex gap-2">
+                      <span>•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+        {/* ================================================= */}
+        {/* RECORRIDO DEL USUARIO */}
+        {/* ================================================= */}
+        <section className="py-32 px-6 relative overflow-hidden">
+  {/* Fondo decorativo sutil */}
+  <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--color-secondary)_0%,_transparent_25%)] opacity-5 pointer-events-none" />
+
+  <div className="max-w-7xl mx-auto relative z-10">
+    <div className="mb-16 md:mb-20 max-w-3xl">
+      <h2 className="font-title text-4xl md:text-5xl text-[var(--color-secondary)] mb-6 py-2">
+        Recorrido del Usuario
+      </h2>
+      <p className="text-muted text-lg leading-relaxed">
+        Mapeo de la experiencia para identificar momentos de fricción y oportunidades clave.
+      </p>
+    </div>
+
+    <div
+      className="
+        flex gap-6 md:gap-8 overflow-x-auto pb-12 -mx-6 px-6 md:mx-0 md:px-0
+        snap-x snap-mandatory scroll-smooth
+      "
+    >
+      {project.research.journey.map((paso, index) => (
+        <motion.div
+          key={paso.stage}
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1, duration: 0.5 }}
+          className="
+            snap-center shrink-0
+            w-[85vw] sm:w-[400px]
+            bg-white rounded-[2.5rem]
+            p-8 md:p-10
+            shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)]
+            border border-[var(--color-secondary)]/5
+            flex flex-col
+            group hover:-translate-y-2 transition-all duration-300
+          "
+        >
+          {/* Header Card */}
+          <div className="flex justify-between items-center mb-8">
+            <span
+              className="
+                flex items-center justify-center
+                w-14 h-14 rounded-full
+                bg-[var(--color-bg-main)] text-[var(--color-secondary)]
+                font-title text-xl font-bold
+                border border-[var(--color-secondary)]/10
+                group-hover:bg-[var(--color-secondary)] group-hover:text-white
+                transition-all duration-300
+              "
+            >
+              {index + 1}
+            </span>
+            <div className="h-px flex-1 bg-gradient-to-r from-[var(--color-secondary)]/10 to-transparent mx-6" />
+          </div>
+
+          {/* Content */}
+          <div className="flex-1 flex flex-col gap-6">
+            <h4 className="font-title text-2xl text-[var(--color-secondary)]">
+              {paso.stage}
+            </h4>
+
+            <div className="space-y-5">
+              {/* Acción */}
+              <div className="flex gap-4 items-start">
+                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
+                <p className="text-muted text-sm leading-relaxed">
+                  {paso.action}
+                </p>
+              </div>
+
+              {/* Pain Point */}
+              <div className="flex gap-4 items-start bg-red-50/80 p-5 rounded-2xl border border-red-100/50">
+                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
+                <div className="space-y-1">
+                  <span className="block text-[10px] font-bold uppercase tracking-widest text-red-400">
+                    Punto de dolor
+                  </span>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    {paso.pain}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+       
+
+        {/* ================================================= */}
+{/* SOLUCIÓN — STICKY IMAGE + SCROLL NARRATIVE */}
+{/* ================================================= */}
+        <section ref={solutionRef} className="bg-[var(--color-secondary)] text-white relative lg:h-[100vh]">
+          <div className="lg:sticky top-0 lg:h-screen flex items-center overflow-hidden">
+            <div className="max-w-[1440px] mx-auto px-6 lg:px-32 w-full py-32 lg:py-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+
+                {/* ================= TEXTO (FIJO) ================= */}
+                <div className="relative z-10 space-y-10">
+                  {currentMockup < 3 ? (
+                    <>
+                      <h2 className="font-title text-5xl md:text-6xl italic">
+                        Solución Visual & Estratégica
+                      </h2>
+
+                      <ul className="space-y-6 max-w-md">
+                        {project.solution.uxStrategy.map((item) => (
+                          <li key={item} className="flex gap-4 items-start">
+                            <span className="mt-2 w-2 h-2 rounded-full bg-white shrink-0" />
+                            <p className="text-white/70 text-sm leading-relaxed">
+                              {item}
+                            </p>
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  ) : (
+                    <>
+                      <h2 className="font-title text-4xl">
+                        Impacto y Aprendizajes
+                      </h2>
+
+                      <ul className="space-y-4 max-w-md">
+                        {project.outcomes.impact.map((item) => (
+                          <li
+                            key={item}
+                            className="pl-6 border-l-4 border-white/30 text-white/70"
+                          >
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </>
+                  )}
+                </div>
+
+                {/* ================= IMAGEN (DINÁMICA) ================= */}
+                <div className="h-[520px] w-full flex items-center justify-center">
+                  <motion.div
+                    key={currentMockup}
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="relative w-full h-full bg-white rounded-3xl shadow-2xl overflow-hidden"
+                  >
+                    <Image
+                      src={(project.solution as any).mockups?.[currentMockup] || project.cover}
+                      alt="Prototipo"
+                      fill
+                      className="object-contain p-10"
+                    />
+                  </motion.div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+       
+
+        {/* ================================================= */}
+        {/* SIGUIENTE PROYECTO */}
+        {/* ================================================= */}
+        {nextProject && (
+          <section className="py-20 border-t border-black/5 bg-white/50">
+            <div className="max-w-4xl mx-auto px-6 text-center">
+              <p className="text-sm uppercase tracking-widest text-muted mb-6">
+                Siguiente Proyecto
+              </p>
+
+              <Link
+                href={`/portafolio/${nextProject.slug}`}
+                className="group inline-flex flex-col items-center gap-4"
+              >
+                <h3 className="font-title text-3xl md:text-5xl text-[var(--color-secondary)] group-hover:text-[var(--color-primary)] transition-colors">
+                  {nextProject.title}
+                </h3>
+
+                <span className="inline-flex items-center gap-2 text-sm font-medium text-muted group-hover:translate-x-2 transition-transform">
+                  Ver caso de estudio <ArrowRight size={16} />
+                </span>
+              </Link>
+            </div>
+          </section>
+        )}
+      </main>
+    </>
   );
 }
 
-/* ================= SSG ================= */
+/* ================= GENERACIÓN ESTÁTICA ================= */
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  return {
-    paths: projects.map((p) => ({ params: { slug: p.slug } })),
-    fallback: false,
-  };
-};
+export const getStaticPaths: GetStaticPaths = async () => ({
+  paths: projects.map((p) => ({ params: { slug: p.slug } })),
+  fallback: false,
+});
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const project = projects.find((p) => p.slug === params?.slug);
-  return { props: { project } };
+  const indiceActual = projects.findIndex(
+    (p) => p.slug === params?.slug
+  );
+
+  const project = projects[indiceActual];
+  const nextProject =
+    projects[(indiceActual + 1) % projects.length];
+
+  return { props: { project, nextProject } };
 };

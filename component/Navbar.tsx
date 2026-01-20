@@ -7,7 +7,6 @@ import ContactModal from "./contact";
 export default function Navbar() {
   return (
     <nav className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
-      {/* Pill container */}
       <div
         className="flex items-center gap-8 px-8 py-3 rounded-full shadow-md"
         style={{ backgroundColor: "var(--color-bg-main)" }}
@@ -25,7 +24,6 @@ export default function Navbar() {
           Miyuki
         </Link>
 
-        {/* Menu */}
         <ul className="flex items-center gap-8 font-body text-sm">
           <li>
             <Link

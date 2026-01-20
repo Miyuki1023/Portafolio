@@ -42,6 +42,7 @@ export interface Project {
     uxStrategy: string[];
     visualDecisions: { colors: string; imagery: string };
     nextStepsNote: string;
+    mockups?: string[];
   };
   outcomes: {
     impact: string[];
@@ -189,6 +190,12 @@ export const projects: Project[] = [
 
       nextStepsNote:
         "Los mockups visuales de alta fidelidad y el prototipo interactivo se encuentran en proceso de desarrollo.",
+      mockups: [
+        "/foto1.png",
+        "/foto2.png",
+        "/foto3.png",
+        "/foto4.png",
+      ],
     },
 
     // ================= RESULTADOS =================
