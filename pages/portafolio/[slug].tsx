@@ -3,7 +3,7 @@ import type { Project } from "@/data/projects";
 import Image from "next/image";
 import Head from "next/head";
 import Link from "next/link";
-import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence, color } from "framer-motion";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { Agbalumo } from "next/font/google";
 import { ArrowRight, FileText, Target, User } from "lucide-react";
@@ -524,80 +524,225 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
   </div>
 </section>
 
-       
-
-        {/* ================================================= */}
+{/* ================================================= */}
 {/* SOLUCIÓN — STICKY IMAGE + SCROLL NARRATIVE */}
 {/* ================================================= */}
-        <section ref={solutionRef} className="bg-[var(--color-secondary)] text-white relative lg:h-[100vh]">
-          <div className="lg:sticky top-0 lg:h-screen flex items-center overflow-hidden">
-            <div className="max-w-[1440px] mx-auto px-6 lg:px-32 w-full py-32 lg:py-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
-                {/* ================= TEXTO (FIJO) ================= */}
-                <div className="relative z-10 space-y-10">
-                  {currentMockup < 3 ? (
-                    <>
-                      <h2 className="font-title text-5xl md:text-6xl italic">
-                        Solución Visual & Estratégica
-                      </h2>
+<section
+  ref={solutionRef}
+  className="
+    relative
+    bg-[var(--color-secondary)]
+    text-white
+    lg:h-[100vh]
+    xl:h-[120vh]
+    overflow-hidden
+  "
+>
+  {/* Sticky SOLO desktop */}
+  <div className="relative lg:sticky lg:top-0 lg:h-screen overflow-hidden">
+    <div className="max-w-[1440px] mx-auto px-6 lg:px-32 h-full py-20 lg:py-0">
 
-                      <ul className="space-y-6 max-w-md">
-                        {project.solution.uxStrategy.map((item) => (
-                          <li key={item} className="flex gap-4 items-start">
-                            <span className="mt-2 w-2 h-2 rounded-full bg-white shrink-0" />
-                            <p className="text-white/70 text-sm leading-relaxed">
-                              {item}
-                            </p>
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  ) : (
-                    <>
-                      <h2 className="font-title text-4xl">
-                        Impacto y Aprendizajes
-                      </h2>
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 h-full items-center">
 
-                      <ul className="space-y-4 max-w-md">
-                        {project.outcomes.impact.map((item) => (
-                          <li
-                            key={item}
-                            className="pl-6 border-l-4 border-white/30 text-white/70"
-                          >
-                            {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </>
-                  )}
-                </div>
+        {/* ================= TEXTO ================= */}
+        <motion.div
+          key={currentMockup}
+          initial={{ opacity: 0.85 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.35, ease: "easeOut" }}
+          className="relative z-10 space-y-6 max-w-[520px]"
+        >
+          {currentMockup < 2 ? (
+            <>
+              {/* Eyebrow */}
+              <p
+                className="uppercase tracking-widest text-xs opacity-60"
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--color-bg-main) 70%, transparent)",
+                }}
+              >
+                Solución UX/UI
+              </p>
 
-                {/* ================= IMAGEN (DINÁMICA) ================= */}
-                <div className="h-[520px] w-full flex items-center justify-center">
-                  <motion.div
-                    key={currentMockup}
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    className="relative w-full h-full bg-white rounded-3xl shadow-2xl overflow-hidden"
+              {/* Título */}
+              <h2
+                className="
+                  font-title leading-tight
+                  text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl py-4
+                "
+                style={{
+                  color:
+                    "color-mix(in srgb, var(--color-bg-main) 85%, transparent)",
+                }}
+              >
+                Diseñado para{" "}
+                <span className="italic opacity-80 py-4">
+                  claridad, fluidez
+                </span>{" "}
+                y{" "}
+                <span className="italic opacity-80 py-4">
+                  decisión
+                </span>
+              </h2>
+
+              {/* Descripción */}
+              <p
+                className="text-sm leading-relaxed opacity-80 max-w-md py-2"
+                style={{ color: "var(--color-bg-main)" }}
+              >
+                Cada pantalla responde a una necesidad concreta del usuario,
+                reduciendo fricción y guiando la acción de forma natural.
+              </p>
+
+              {/* Lista UX */}
+              <ul className="space-y-4 pt-2 max-w-md ">
+                {project.solution.uxStrategy.map((item) => (
+                  <li
+                    key={item}
+                    className="flex gap-3 items-start"
+                  >
+                    <span className="mt-2 w-1.5 h-1.5 rounded-full bg-white/40 shrink-0" />
+                    <p
+                      className="text-sm leading-relaxed opacity-85"
+                      style={{ color: "var(--color-bg-main)" }}
+                    >
+                      {item}
+                    </p>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : (
+            <>
+              <p
+                className="uppercase tracking-widest text-xs opacity-60"
+                style={{ color: "var(--color-bg-main)" }}
+              >
+                Resultados
+              </p>
+
+              <h2
+                className="
+                  font-title
+                  text-3xl sm:text-4xl md:text-5xl py-4
+                "
+                style={{ color: "var(--color-bg-main)" }}
+              >
+                Impacto real en la experiencia
+              </h2>
+
+              <ul className="space-y-4 pt-2 max-w-md py-4">
+                {project.outcomes.impact.map((item) => (
+                  <li
+                    key={item}
+                    className="
+                      pl-5
+                      border-l border-white/30
+                      text-sm
+                      opacity-80
+                    "
+                  >
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+        </motion.div>
+
+        {/* ================= IMAGEN ================= */}
+        <div className="relative w-full flex items-center justify-center">
+
+          {/* DESKTOP */}
+          {isDesktop && (
+            <div className="relative h-[450px] sm:h-[550px] md:h-[650px] lg:h-[450px] w-full">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={currentMockup}
+                  initial={{ opacity: 0, y: 20, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.98 }}
+                  transition={{
+                    duration: 0.4,
+                    ease: "easeOut",
+                  }}
+                  className="relative w-full h-full flex items-center justify-center"
+                >
+                  <div className="absolute inset-0 rounded-[36px] bg-white/10 blur-xl" />
+
+                  <div
+                    className="
+                      relative w-[95%] h-[95%]
+                      rounded-[30px]
+                      overflow-hidden
+                      bg-gradient-to-b from-white/95 to-white/85
+                      shadow-[0_30px_80px_rgba(0,0,0,0.3)]
+                    "
                   >
                     <Image
-                      src={(project.solution as any).mockups?.[currentMockup] || project.cover}
-                      alt="Prototipo"
+                      src={
+                        project.solution.mockups?.[currentMockup] ||
+                        project.cover
+                      }
+                      alt="Prototipo final"
                       fill
-                      className="object-contain p-10"
+                      priority
+                      className="object-contain p-6 sm:p-8 w-auto h-auto"
                     />
-                  </motion.div>
-                </div>
-
-              </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
             </div>
-          </div>
-        </section>
+          )}
 
+          {/* MOBILE / TABLET */}
+          {!isDesktop && (
+            <div className="space-y-24 w-full py-12">
+              {project.solution.mockups?.map((src, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-100px" }}
+                  transition={{ duration: 0.6, ease: "easeOut" }}
+                  className="relative"
+                >
+                  {/* Fondo difuminado detrás */}
+                  <div className="absolute inset-4 bg-white/20 blur-2xl rounded-full" />
 
-       
+                  <div
+                    className="
+                      relative h-[550px]
+                      rounded-[3rem]
+                      overflow-hidden
+                      bg-gradient-to-br from-white to-gray-100
+                      shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]
+                      border-[8px] border-white/10
+                    "
+                  >
+                    <Image
+                      src={src}
+                      alt={`Vista de solución ${index + 1}`}
+                      fill
+                      className="object-contain p-6"
+                    />
+                  </div>
+
+                  {/* Número decorativo */}
+                  <div className="absolute -top-12 -right-4 text-[8rem] font-title text-white opacity-5 font-bold leading-none pointer-events-none">
+                    {index + 1}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
         {/* ================================================= */}
         {/* SIGUIENTE PROYECTO */}

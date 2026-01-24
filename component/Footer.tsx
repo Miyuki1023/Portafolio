@@ -11,11 +11,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-14">
 
           {/* ================= BRAND ================= */}
-          <div className="space-y-4">
+          <div className="space-y-5">
             <h3 className="font-title text-3xl"style={{ color: "var(--color-soft)" }} >
               Miyuki Panduro
-            </h3>
-<br />
+            </h3><br />
+            <span className="block w-12 h-[2px] bg-[var(--color-soft-pink)]" />
             <p className="text-sm leading-relaxed max-w-sm opacity-90"style={{ color: "var(--color-soft)" }} >
               Diseñadora UX/UI & Frontend Developer especializada en crear
               experiencias digitales funcionales, accesibles y alineadas a
@@ -24,7 +24,7 @@ const Footer = () => {
           </div>
 
          {/* ================= NAV ================= */}
-<div className="space-y-5">
+<div className="space-y-5 justify-self-center">
   <h4
     className="text-lg font-medium"
     style={{ color: "var(--color-soft)" }}
@@ -32,7 +32,7 @@ const Footer = () => {
     Navegación
   </h4>
 
-  <ul className="space-y-3 text-sm text-[var(--color-soft)] hover:text-[var(--color-dark)]">
+  <ul className="space-y-3 text-sm text-[var(--color-bg-main)] hover:text-[var(--color-dark)]">
     {[
       { label: "Sobre mí", href: "/about" },
       { label: "Portafolio", href: "/portfolio" },
@@ -41,18 +41,20 @@ const Footer = () => {
       <li key={item.label}>
         <a
           href={item.href}
-          className="
-            inline-flex items-center
-            px-4 py-2
-            rounded-full
-            font-medium
-            bg-[var(--color-dark)]
-            text-[var(--color-soft)]
-            transition-all duration-300 ease-out
-            hover:bg-[var(--color-soft-pink)]
-            hover:text-[var(--color-dark)]
-            hover:-translate-y-[2px]
-          "
+         className=" text-center
+  relative inline-block font-medium
+  text-white/80
+
+  after:content-['']
+  after:absolute after:-bottom-1 after:left-0
+  after:h-[2px] after:w-0
+  after:bg-[var(--color-soft-pink)]
+  after:transition-all after:duration-300
+
+  hover:text-[var(--color-soft-pink)]
+  hover:after:w-full
+"
+          style={{ color: "var(--color-bg-main)" }}
         >
           {item.label}
         </a>
@@ -96,13 +98,14 @@ const Footer = () => {
                   key={item.label}
                   href={item.href}
                   target="_blank"
-                  className="
-                    px-3 py-1
-                    rounded-md
-                    bg-[var(--color-bg-secondary)]
-                    text-secondary
-                    hover:bg-[var(--color-soft-pink)]
-                    transition
+                  className=" font-medium
+                    bg-white
+                    rounded-full border border-white/30
+                    px-4 py-2 text-xs font-medium
+                    backdrop-blur-sm
+                    transition-all duration-300
+                    hover:border-white hover:bg-white/10
+                    focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white
                   "
                 >
                   {item.label}

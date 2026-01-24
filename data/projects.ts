@@ -191,10 +191,10 @@ export const projects: Project[] = [
       nextStepsNote:
         "Los mockups visuales de alta fidelidad y el prototipo interactivo se encuentran en proceso de desarrollo.",
       mockups: [
-        "/foto1.png",
-        "/foto2.png",
+        "/foto1.jpeg",
+        "/foto2.jpeg",
         "/foto3.png",
-        "/foto4.png",
+        "/foto4.jpeg",
       ],
     },
 
@@ -221,7 +221,7 @@ export const projects: Project[] = [
   title: "Profe Ideal",
   subtitle: "Plataforma de evaluación y selección docente",
   category: "UX/UI · Research · Web Platform",
-  cover: "/profe-ideal-cover.jpg",
+  cover: "/profe-ideal-cover.jpeg",
   role: "UX/UI Designer · Research",
   duration: "6 semanas",
 
@@ -277,30 +277,24 @@ export const projects: Project[] = [
         "Pérdida de tiempo buscando referencias",
       ],
 
-      img: "/persona-camila.jpg",
+      img: "/persona2.jpg",
     },
 
     journey: [
       {
         stage: "Búsqueda",
-        action:
-          "Busca información en Google, redes sociales y grupos de WhatsApp",
-        pain:
-          "Encuentra opiniones contradictorias y sin respaldo",
+        action: "Busca información en Google, redes sociales y grupos de WhatsApp",
+        pain: "Encuentra opiniones contradictorias y sin respaldo",
       },
       {
         stage: "Comparación",
-        action:
-          "Compara experiencias de otros estudiantes y perfiles en LinkedIn",
-        pain:
-          "No existen criterios claros para comparar docentes",
+        action: "Compara experiencias de otros estudiantes y perfiles en LinkedIn",
+        pain:  "No existen criterios claros para comparar docentes",
       },
       {
         stage: "Decisión",
-        action:
-          "Elige un docente basándose en la información disponible",
-        pain:
-          "Miedo a equivocarse y afectar su rendimiento académico",
+        action: "Elige un docente basándose en la información disponible",
+        pain: "Miedo a equivocarse y afectar su rendimiento académico",
       },
     ],
 
@@ -363,7 +357,14 @@ export const projects: Project[] = [
 
     nextStepsNote:
       "El prototipo de alta fidelidad y pruebas de usabilidad están planificadas para la siguiente fase.",
-  },
+     mockups: [
+        "/ProfeIdeal/Foto1.jpeg",
+        "/ProfeIdeal/Foto2.webm",
+        "/ProfeIdeal/Foto3.png",
+        "/ProfeIdeal/Foto4.jpeg",
+      ],
+ 
+    },
 
   // ================= RESULTADOS =================
   outcomes: {
