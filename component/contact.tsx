@@ -81,7 +81,7 @@ export default function ContactModal({ children }: Props) {
                   {/* LINKS */}
                   <div className="flex flex-wrap gap-4 pt-4">
                     <a
-                      href="https://www.linkedin.com"
+                      href="https://www.linkedin.com/in/miyuki-panduro-huarote-742568237"
                       target="_blank"
                       className="btn-outline flex items-center gap-2"
                     >

@@ -5,14 +5,14 @@
    🌸 VARIABLES DE DISEÑO (THEME)
 ================================ */
 :root {
-  /* 🌸 Brand Colors (TU PALETA) */
-  --color-primary: #dd2d4a;     
-  --color-secondary: #880d1e;   
-  --color-accent: #f26a8d;      
-  --color-soft-pink: #f49cbb;  
-  --color-bg-main: #FFF3FB; 
-  --color-bg-secondary: #cbeef3; 
-  --color-letra-bg:#0BA4BA;
+  /* 🌸 Brand Colors */
+  --color-primary: #f49cbb;
+  --color-secondary: #4b0026;
+  --color-accent: #f26a8d;
+  --color-soft-pink: #dd2d65;
+  --color-bg-main: #FFF3FB;
+  --color-bg-secondary: #5a86cb;
+  --color-letra-bg: #3d5d91;
 
   /* 🖤 Neutrales */
   --color-dark: #2b0f16;

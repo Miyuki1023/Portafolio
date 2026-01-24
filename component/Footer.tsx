@@ -90,7 +90,7 @@ const Footer = () => {
             {/* SOCIAL */}
             <div className="flex flex-wrap gap-3 pt-2 text-sm">
               {[
-                { label: "LinkedIn", href: "https://www.linkedin.com" },
+                { label: "LinkedIn", href: "https://www.linkedin.com/in/miyuki-panduro-huarote-742568237" },
                 { label: "Instagram", href: "https://www.instagram.com" },
                 { label: "WhatsApp", href: "https://wa.me/51936693905" },
               ].map((item) => (

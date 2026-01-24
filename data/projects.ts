@@ -57,7 +57,7 @@ export const projects: Project[] = [
     title: "Molina Producciones",
     subtitle: "Optimización de conversión desde redes sociales",
     category: "UX/UI · Research · Web Design",
-    cover: "/cover.jpeg",
+    cover: "/molina/cover.jpeg",
     role: "UX/UI Designer · Frontend",
     duration: "4 semanas",
 
@@ -112,7 +112,7 @@ export const projects: Project[] = [
           "Paquetes poco claros o confusos",
         ],
 
-        img: "/persona.jpg",
+        img: "/molina/persona.jpg",
       },
 
       journey: [
@@ -191,10 +191,10 @@ export const projects: Project[] = [
       nextStepsNote:
         "Los mockups visuales de alta fidelidad y el prototipo interactivo se encuentran en proceso de desarrollo.",
       mockups: [
-        "/foto1.jpeg",
-        "/foto2.jpeg",
-        "/foto3.png",
-        "/foto4.jpeg",
+        "/molina/foto1.jpeg",
+        "/molina/foto2.jpeg",
+        "/molina/foto3.png",
+        "/molina/foto4.jpeg",
       ],
     },
 
@@ -221,7 +221,7 @@ export const projects: Project[] = [
   title: "Profe Ideal",
   subtitle: "Plataforma de evaluación y selección docente",
   category: "UX/UI · Research · Web Platform",
-  cover: "/profe-ideal-cover.jpeg",
+  cover: "/ProfeIdeal/profe-ideal-cover.jpeg",
   role: "UX/UI Designer · Research",
   duration: "6 semanas",
 
@@ -277,7 +277,7 @@ export const projects: Project[] = [
         "Pérdida de tiempo buscando referencias",
       ],
 
-      img: "/persona2.jpg",
+      img: "/ProfeIdeal/persona2.jpg",
     },
 
     journey: [

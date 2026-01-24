@@ -158,17 +158,26 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
               { 
                 titulo: "Contexto", 
                 contenido: project.overview.context,
-                icon: <FileText strokeWidth={1.5} size={28} />
+                icon: <FileText strokeWidth={1.5} size={28} />,
+                gradient: "from-[var(--color-bg-main)]/100 to-[var(--color-bg-main)]/100",
+                iconBg: "bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-accent)]/20",
+                iconColor: "text-[var(--color-primary)]"
               },
               { 
                 titulo: "Objetivo", 
                 contenido: project.overview.goal,
-                icon: <Target strokeWidth={1.5} size={28} />
+                icon: <Target strokeWidth={1.5} size={28} />,
+                gradient: "from-[var(--color-bg-main)]/100 to-[var(--color-bg-main)]/100",
+                iconBg: "bg-gradient-to-br from-[var(--color-accent)]/20 to-[var(--color-soft-pink)]/20",
+                iconColor: "text-[var(--color-accent)]"
               },
               { 
                 titulo: "Rol", 
                 contenido: project.role,
-                icon: <User strokeWidth={1.5} size={28} />
+                icon: <User strokeWidth={1.5} size={28} />,
+                gradient: "from-[var(--color-bg-main)]/100 to-[var(--color-bg-main)]/100",
+                iconBg: "bg-gradient-to-br from-[var(--color-soft-pink)]/20 to-[var(--color-accent)]/20",
+                iconColor: "text-[var(--color-primary)]"
               },
             ].map((item, index) => (
               <motion.div 
@@ -177,13 +186,13 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
                 viewport={{ once: true }}
-                className="bg-white rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-black/5 flex flex-col items-start hover:-translate-y-2 transition-all duration-300"
+                className={`bg-gradient-to-br ${item.gradient} backdrop-blur-sm rounded-[2.5rem] p-8 md:p-10 shadow-xl border border-[var(--color-primary)]/10 flex flex-col items-start hover:-translate-y-2 hover:shadow-2xl transition-all duration-300 group`}
               >
-                <div className="p-4 rounded-2xl bg-[var(--color-bg-main)] text-[var(--color-secondary)] mb-6">
+                <div className={`p-4 rounded-2xl ${item.iconBg} ${item.iconColor} mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   {item.icon}
                 </div>
                 
-                <h3 className="font-title text-2xl text-[var(--color-secondary)] mb-4">
+                <h3 className="font-title text-2xl bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent mb-4">
                   {item.titulo}
                 </h3>
                 <p className="text-muted text-base leading-relaxed">
@@ -209,14 +218,14 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
                   viewport={{ once: true }}
                   transition={{ duration: 0.6 }}
                 >
-                  <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[var(--color-secondary)]/5 text-[var(--color-secondary)] text-xs font-bold tracking-widest uppercase mb-6">
-                    <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-secondary)]" />
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-[var(--color-primary)]/20 to-[var(--color-accent)]/20 text-[var(--color-primary)] text-xs font-bold tracking-widest uppercase mb-6 border border-[var(--color-primary)]/30">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]" />
                     Metodología
                   </span>
 
-                  <h2 className="font-title text-4xl md:text-5xl lg:text-6xl text-[var(--color-secondary)] leading-[0.9] py-2">
+                  <h2 className="font-title text-4xl md:text-5xl lg:text-6xl bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent leading-[0.9] py-2">
                     El Proceso <br />
-                    <span className="text-3xl md:text-4xl text-muted font-normal italic font-sans py-2">
+                    <span className="text-3xl md:text-4xl text-[var(--color-accent)] font-normal italic font-sans py-2 bg-none text-[var(--color-accent)]">
                       Creativo & Técnico
                     </span>
                   </h2>
@@ -240,13 +249,13 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
                   whileInView={{ scaleX: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: 0.4, duration: 0.8, ease: "circOut" }}
-                  className="hidden md:block w-24 h-1 bg-gradient-to-r from-[var(--color-secondary)] to-transparent rounded-full opacity-30"
+                  className="hidden md:block w-24 h-1.5 bg-gradient-to-r from-[var(--color-primary)] via-[var(--color-accent)] to-transparent rounded-full opacity-60"
                 />
               </div>
               
               <ul className="space-y-8 relative">
                 
-                <div className="absolute left-[1.65rem] top-8 bottom-8 w-0.5 bg-gradient-to-b from-[var(--color-secondary)]/5 via-[var(--color-secondary)]/20 to-[var(--color-secondary)]/5 md:hidden" />
+                <div className="absolute left-[1.65rem] top-8 bottom-8 w-1 bg-gradient-to-b from-[var(--color-primary)]/5 via-[var(--color-accent)]/30 to-[var(--color-primary)]/5 md:hidden" />
 
                 {project.process.steps.map((step, index) => {
                   const curveOffsets = [
@@ -273,16 +282,16 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
                         className="
                           relative z-10
                           flex-shrink-0 w-14 h-14
-                          rounded-full border-2 border-[var(--color-secondary)]/10
-                          bg-white
+                          rounded-full border-2 border-[var(--color-primary)]/30
+                          bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-accent)]/10
                           flex items-center justify-center
-                          font-title text-xl font-bold text-[var(--color-secondary)]
+                          font-title text-xl font-bold bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent
                           shadow-[0_4px_20px_rgba(0,0,0,0.05)]
                           transition-all duration-300
                           group-hover:scale-110
-                          group-hover:border-[var(--color-secondary)]
-                          group-hover:bg-[var(--color-secondary)]
-                          group-hover:text-white
+                          group-hover:border-[var(--color-accent)]
+                          group-hover:bg-gradient-to-r group-hover:from-[var(--color-primary)] group-hover:to-[var(--color-accent)]
+                          group-hover:text-white group-hover:bg-clip-border
                           group-hover:shadow-xl
                         "
                       >
@@ -291,12 +300,12 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
 
                       <div className="
                         flex-1 pt-1 p-6 rounded-3xl 
-                        border border-transparent 
+                        border border-[var(--color-primary)]/0 
                         transition-all duration-300 
-                        hover:bg-white hover:shadow-[0_10px_40px_rgba(0,0,0,0.06)] hover:border-[var(--color-secondary)]/5
+                        hover:bg-gradient-to-br hover:from-white hover:to-[var(--color-soft-pink)]/5 hover:shadow-[0_10px_40px_rgba(221,45,101,0.1)] hover:border-[var(--color-primary)]/20
                         group-hover:-translate-y-1
                       ">
-                        <p className="text-lg text-muted leading-relaxed group-hover:text-[var(--color-dark)] transition-colors">
+                        <p className="text-lg text-muted leading-relaxed group-hover:text-[var(--color-primary)] transition-colors">
                           {step}
                         </p>
                       </div>
@@ -320,7 +329,7 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
 
         <h2 className="font-title text-5xl md:text-7xl leading-tight py-2">
           Análisis <br />
-          <span className="italic text-[var(--color-secondary)]">
+          <span className="italic bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent">
             profundo
           </span>{" "}
           del usuario
@@ -335,13 +344,14 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
           {project.research.keyInsights.slice(0, 2).map((insight, index) => (
             <div
               key={index}
-              className="flex items-start gap-4 p-6 border-l-2 border-[var(--color-accent)] bg-white/60 backdrop-blur-sm"
+              className="flex items-start gap-4 p-6 border-l-4 border-[var(--color-primary)] bg-gradient-to-r from-[var(--color-primary)]/5 to-[var(--color-accent)]/5 backdrop-blur-sm rounded-lg hover:shadow-lg transition-all duration-300"
             >
+              <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] mt-2 flex-shrink-0" />
               <div>
-                <h4 className="font-bold text-lg mb-1 italic">
+                <h4 className="font-bold text-lg mb-1 italic text-[var(--color-primary)]">
                   Insight clave
                 </h4>
-                <p className="text-sm text-gray-500 leading-relaxed">
+                <p className="text-sm text-gray-600 leading-relaxed">
                   {insight}
                 </p>
               </div>
@@ -354,16 +364,16 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
 
     {/* COLUMNA DERECHA — PERSONA */}
     <div className="lg:col-span-7">
-      <div className="bg-white p-12 rounded-sm shadow-xl relative overflow-hidden">
+      <div className="bg-gradient-to-br from-white to-[var(--color-soft-pink)]/5 p-12 rounded-2xl shadow-xl relative overflow-hidden border border-[var(--color-primary)]/10">
 
         {/* DETALLE DECORATIVO */}
-        <div className="absolute top-0 right-0 w-32 h-32 bg-[var(--color-secondary)] opacity-5 -mr-16 -mt-16 rounded-full" />
+        <div className="absolute top-0 right-0 w-40 h-40 bg-gradient-to-br from-[var(--color-primary)] to-[var(--color-accent)] opacity-5 -mr-16 -mt-16 rounded-full blur-3xl" />
 
         <div className="flex flex-col md:flex-row gap-10 items-center md:items-start">
 
           {/* AVATAR */}
           <div
-            className="w-40 h-40 rounded-full bg-cover bg-center border-4 border-[var(--color-bg-main)] shadow-lg flex-shrink-0"
+            className="w-40 h-40 rounded-full bg-cover bg-center border-4 border-[var(--color-primary)] shadow-xl flex-shrink-0 ring-2 ring-[var(--color-accent)]/30"
             style={{
               backgroundImage: `url(${project.research.persona.img})`,
             }}
@@ -371,11 +381,11 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
 
           {/* INFO PERSONA */}
           <div className="flex-1">
-            <span className="text-[var(--color-secondary)] font-bold text-xs uppercase tracking-widest">
+            <span className="bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] bg-clip-text text-transparent font-bold text-xs uppercase tracking-widest">
               Persona Profile
             </span>
 
-            <h3 className="font-title text-4xl font-bold mt-2">
+            <h3 className="font-title text-4xl font-bold mt-2 bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] bg-clip-text text-transparent">
               {project.research.persona.name}
             </h3>
 
@@ -392,14 +402,14 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
               {/* MOTIVACIONES */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-                  Motivaciones
+              <div className="p-4 rounded-xl bg-gradient-to-br from-[var(--color-primary)]/5 to-[var(--color-accent)]/5 border border-[var(--color-primary)]/10">
+                <h4 className="text-xs font-bold uppercase tracking-widest text-[var(--color-primary)] mb-4">
+                  ✨ Motivaciones
                 </h4>
                 <ul className="text-sm space-y-3">
                   {project.research.persona.motivations?.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span>•</span>
+                      <span className="text-[var(--color-primary)] font-bold">→</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -407,14 +417,14 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
               </div>
 
               {/* FRUSTRACIONES */}
-              <div>
-                <h4 className="text-xs font-bold uppercase tracking-widest text-gray-400 mb-4">
-                  Frustraciones
+              <div className="p-4 rounded-xl bg-gradient-to-br from-red-50 to-[var(--color-accent)]/5 border border-red-200/50">
+                <h4 className="text-xs font-bold uppercase tracking-widest text-red-600 mb-4">
+                  ⚠️ Frustraciones
                 </h4>
                 <ul className="text-sm space-y-3">
                   {project.research.persona.frustrations?.map((item) => (
                     <li key={item} className="flex gap-2">
-                      <span>•</span>
+                      <span className="text-red-500 font-bold">✕</span>
                       <span>{item}</span>
                     </li>
                   ))}
@@ -439,7 +449,7 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
 
   <div className="max-w-7xl mx-auto relative z-10">
     <div className="mb-16 md:mb-20 max-w-3xl">
-      <h2 className="font-title text-4xl md:text-5xl text-[var(--color-secondary)] mb-6 py-2">
+      <h2 className="font-title text-4xl md:text-5xl bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent mb-6 py-2">
         Recorrido del Usuario
       </h2>
       <p className="text-muted text-lg leading-relaxed">
@@ -463,12 +473,12 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
           className="
             snap-center shrink-0
             w-[85vw] sm:w-[400px]
-            bg-white rounded-[2.5rem]
+            bg-gradient-to-br from-white to-[var(--color-soft-pink)]/10 rounded-[2.5rem]
             p-8 md:p-10
-            shadow-[0_20px_40px_-10px_rgba(0,0,0,0.05)]
-            border border-[var(--color-secondary)]/5
+            shadow-[0_20px_40px_-10px_rgba(221,45,101,0.1)]
+            border border-[var(--color-primary)]/20
             flex flex-col
-            group hover:-translate-y-2 transition-all duration-300
+            group hover:-translate-y-2 hover:shadow-[0_30px_60px_-10px_rgba(221,45,101,0.2)] transition-all duration-300
           "
         >
           {/* Header Card */}
@@ -477,41 +487,41 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
               className="
                 flex items-center justify-center
                 w-14 h-14 rounded-full
-                bg-[var(--color-bg-main)] text-[var(--color-secondary)]
+                bg-gradient-to-br from-[var(--color-primary)]/20 to-[var(--color-accent)]/20 text-[var(--color-primary)]
                 font-title text-xl font-bold
-                border border-[var(--color-secondary)]/10
-                group-hover:bg-[var(--color-secondary)] group-hover:text-white
+                border border-[var(--color-primary)]/30
+                group-hover:bg-gradient-to-r group-hover:from-[var(--color-primary)] group-hover:to-[var(--color-accent)] group-hover:text-white
                 transition-all duration-300
               "
             >
               {index + 1}
             </span>
-            <div className="h-px flex-1 bg-gradient-to-r from-[var(--color-secondary)]/10 to-transparent mx-6" />
+            <div className="h-px flex-1 bg-gradient-to-r from-[var(--color-primary)]/30 to-transparent mx-6" />
           </div>
 
           {/* Content */}
           <div className="flex-1 flex flex-col gap-6">
-            <h4 className="font-title text-2xl text-[var(--color-secondary)]">
+            <h4 className="font-title text-2xl bg-gradient-to-r from-[var(--color-secondary)] to-[var(--color-primary)] bg-clip-text text-transparent">
               {paso.stage}
             </h4>
 
             <div className="space-y-5">
               {/* Acción */}
               <div className="flex gap-4 items-start">
-                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-emerald-400 shrink-0" />
-                <p className="text-muted text-sm leading-relaxed">
+                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] shrink-0" />
+                <p className="text-gray-700 text-sm leading-relaxed">
                   {paso.action}
                 </p>
               </div>
 
               {/* Pain Point */}
-              <div className="flex gap-4 items-start bg-red-50/80 p-5 rounded-2xl border border-red-100/50">
-                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-red-400 shrink-0" />
+              <div className="flex gap-4 items-start bg-gradient-to-br from-red-50 to-red-100/30 p-5 rounded-2xl border border-red-200/70 hover:border-red-300 transition-colors">
+                <div className="mt-2 w-1.5 h-1.5 rounded-full bg-gradient-to-r from-red-500 to-red-400 shrink-0" />
                 <div className="space-y-1">
-                  <span className="block text-[10px] font-bold uppercase tracking-widest text-red-400">
-                    Punto de dolor
+                  <span className="block text-[10px] font-bold uppercase tracking-widest text-red-600">
+                    ⚠️ Punto de dolor
                   </span>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <p className="text-sm text-red-700 leading-relaxed font-medium">
                     {paso.pain}
                   </p>
                 </div>
@@ -534,8 +544,7 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
     relative
     bg-[var(--color-secondary)]
     text-white
-    lg:h-[100vh]
-    xl:h-[120vh]
+    lg:h-[400vh]
     overflow-hidden
   "
 >
@@ -783,23 +792,24 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
         {/* SIGUIENTE PROYECTO */}
         {/* ================================================= */}
         {nextProject && (
-          <section className="py-20 border-t border-black/5 bg-white/50">
+          <section className="py-24 border-t border-[var(--color-primary)]/20 bg-gradient-to-b from-[var(--color-soft-pink)]/10 to-white">
             <div className="max-w-4xl mx-auto px-6 text-center">
-              <p className="text-sm uppercase tracking-widest text-muted mb-6">
-                Siguiente Proyecto
+              <p className="text-sm uppercase tracking-widest text-[var(--color-primary)] font-bold mb-8">
+                ✨ Siguiente Proyecto
               </p>
 
               <Link
                 href={`/portafolio/${nextProject.slug}`}
-                className="group inline-flex flex-col items-center gap-4"
+                className="group inline-flex flex-col items-center gap-6"
               >
-                <h3 className="font-title text-3xl md:text-5xl text-[var(--color-secondary)] group-hover:text-[var(--color-primary)] transition-colors">
+                <h3 className="font-title text-3xl md:text-5xl bg-gradient-to-r from-[var(--color-secondary)] via-[var(--color-primary)] to-[var(--color-secondary)] bg-clip-text text-transparent group-hover:to-[var(--color-accent)] transition-all duration-300">
                   {nextProject.title}
                 </h3>
 
-                <span className="inline-flex items-center gap-2 text-sm font-medium text-muted group-hover:translate-x-2 transition-transform">
-                  Ver caso de estudio <ArrowRight size={16} />
-                </span>
+                <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)] text-white font-medium text-sm group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                  Ver caso de estudio
+                  <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                </div>
               </Link>
             </div>
           </section>

@@ -88,18 +88,18 @@ export default function HomePage() {
           >
             <motion.span
               variants={ANIMATIONS.item}
-              className="inline-flex justify-center lg:justify-start items-center gap-2 text-sm text-secondary font-bold"
+              className="inline-flex justify-center lg:justify-start items-center gap-2 text-sm font-bold text-[var(--color-primary)]"
             >
               UX/UI · Frontend Developer · Diseño centrado en el usuario
             </motion.span>
       
             <motion.h1
               variants={ANIMATIONS.item}
-              className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-secondary"
+              className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-[var(--color-secondary)]"
             >
               Transformo ideas en{" "}
-              <span className="text-gradient">experiencias digitales</span>{" "}
-              funcionales y atractivas
+              <span className="text-[var(--color-primary)]">experiencias digitales</span>{" "}
+              <span className="block text-[var(--color-secondary)]">funcionales y atractivas</span>
             </motion.h1>
       
             <motion.p
@@ -116,7 +116,8 @@ export default function HomePage() {
             >
               <Link
               href="/portafolio"
-                className="btn-outline inline-flex items-center gap-2"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] font-medium text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+              style={{color:"var(--color-bg-main)"}}
               >
                 Ver portafolio
                 <ArrowRight size={16} />
@@ -157,12 +158,11 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-100px" }}
         variants={ANIMATIONS.fadeIn}
         id="seccion_llamada"
-        className="bg-[var(--color-secondary)] py-6 md:py-8"
+        className="bg-[var(--color-primary)] py-6 md:py-8"
       >
         <div className="max-w-6xl mx-auto px-6">
           <p
-            className="font-title text-sm sm:text-base md:text-lg text-center"
-            style={{ color: "var(--color-soft)" }}
+            className="font-title text-sm sm:text-base md:text-lg text-center text-white"
           >
             Diseño y desarrollo experiencias digitales con propósito, claridad y enfoque en resultados.
           </p>
@@ -186,7 +186,7 @@ export default function HomePage() {
         
               {/* Heading */}
               <motion.div variants={ANIMATIONS.item} className="space-y-4 max-w-xl">
-                <h2 className="font-title text-2xl sm:text-3xl md:text-4xl">
+                <h2 className="font-title text-2xl sm:text-3xl md:text-4xl text-[var(--color-secondary)]">
                   Mi forma de trabajar
                 </h2><br />
                 <p className="text-muted text-sm sm:text-base">
@@ -211,12 +211,12 @@ export default function HomePage() {
                 />
         
                 {/* ITEM */}
-                <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start">
-                  <span className="font-title text-4xl text-secondary opacity-80">
+                <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
+                  <span className="font-title text-4xl text-[var(--color-primary)] group-hover:scale-110 transition-transform">
                     01
                   </span>
                   <div className="space-y-2">
-                    <h3 className="font-title text-lg sm:text-xl">
+                    <h3 className="font-title text-lg sm:text-xl text-[var(--color-secondary)]">
                       Diseño centrado en el usuario
                     </h3>
                     <p className="text-muted text-sm sm:text-base max-w-md">
@@ -226,12 +226,12 @@ export default function HomePage() {
                   </div>
                 </motion.div>
         
-                <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start">
-                  <span className="font-title text-4xl text-secondary opacity-80">
+                <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
+                  <span className="font-title text-4xl text-[var(--color-accent)] group-hover:scale-110 transition-transform">
                     02
                   </span>
                   <div className="space-y-2">
-                    <h3 className="font-title text-lg sm:text-xl">
+                    <h3 className="font-title text-lg sm:text-xl text-[var(--color-secondary)]">
                       Enfoque en resultados
                     </h3>
                     <p className="text-muted text-sm sm:text-base max-w-md">
@@ -241,12 +241,12 @@ export default function HomePage() {
                   </div>
                 </motion.div>
         
-                <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start">
-                  <span className="font-title text-4xl text-secondary opacity-80">
+                <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
+                  <span className="font-title text-4xl text-[var(--color-soft-pink)] group-hover:scale-110 transition-transform">
                     03
                   </span>
                   <div className="space-y-2">
-                    <h3 className="font-title text-lg sm:text-xl">
+                    <h3 className="font-title text-lg sm:text-xl text-[var(--color-secondary)]">
                       Comunicación y colaboración
                     </h3>
                     <p className="text-muted text-sm sm:text-base max-w-md">
@@ -268,8 +268,8 @@ export default function HomePage() {
             >
               {/* Halo / glow detrás más sofisticado */}
               <div className="absolute w-[500px] h-[500px] rounded-full 
-                              bg-gradient-to-tr from-[var(--color-soft-pink)]/30 to-[var(--color-primary)]/20
-                              opacity-60 blur-[100px] 
+                              bg-[var(--color-primary)]/20
+                              opacity-70 blur-[100px] 
                               -z-10 hidden lg:block" />
             
               {/* Contenedor relativo para la composición */}
@@ -290,14 +290,14 @@ export default function HomePage() {
                 <motion.div 
                   variants={ANIMATIONS.floating}
                   animate="animate"
-                  className="absolute -top-8 -left-12 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/40 flex items-center gap-4"
+                  className="absolute -top-8 -left-12 bg-white/95 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-[var(--color-primary)]/20 flex items-center gap-4"
                 >
-                  <div className="bg-orange-100 p-3 rounded-xl text-orange-600">
+                  <div className="bg-[var(--color-primary)]/15 p-3 rounded-xl text-[var(--color-primary)]">
                       <Search size={24} />
                   </div>
                   <div>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Research</p>
-                      <p className="text-base font-bold text-gray-800">User Centric</p>
+                      <p className="text-base font-bold text-[var(--color-secondary)]">User Centric</p>
                   </div>
                 </motion.div>
 
@@ -306,14 +306,14 @@ export default function HomePage() {
                   variants={ANIMATIONS.floating}
                   animate="animate"
                   transition={{ delay: 1.5, duration: 4, repeat: Infinity, ease: "easeInOut" }} 
-                  className="absolute top-1/2 -right-16 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/40 flex items-center gap-4"
+                  className="absolute top-1/2 -right-16 bg-white/95 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-[var(--color-accent)]/20 flex items-center gap-4"
                 >
-                  <div className="bg-purple-100 p-3 rounded-xl text-purple-600">
+                  <div className="bg-[var(--color-accent)]/15 p-3 rounded-xl text-[var(--color-accent)]">
                       <PenTool size={24} />
                   </div>
                   <div>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Design</p>
-                      <p className="text-base font-bold text-gray-800">Pixel Perfect</p>
+                      <p className="text-base font-bold text-[var(--color-secondary)]">Pixel Perfect</p>
                   </div>
                 </motion.div>
 
@@ -322,14 +322,14 @@ export default function HomePage() {
                   variants={ANIMATIONS.floating}
                   animate="animate"
                   transition={{ delay: 0.5, duration: 5, repeat: Infinity, ease: "easeInOut" }} 
-                  className="absolute -bottom-8 left-8 bg-white/90 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-white/40 flex items-center gap-4"
+                  className="absolute -bottom-8 left-8 bg-white/95 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-[var(--color-soft-pink)]/20 flex items-center gap-4"
                 >
-                  <div className="bg-blue-100 p-3 rounded-xl text-blue-600">
+                  <div className="bg-[var(--color-soft-pink)]/15 p-3 rounded-xl text-[var(--color-soft-pink)]">
                       <Code size={24} />
                   </div>
                   <div>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Dev</p>
-                      <p className="text-base font-bold text-gray-800">Clean Code</p>
+                      <p className="text-base font-bold text-[var(--color-secondary)]">Clean Code</p>
                   </div>
                 </motion.div>
               </div>
@@ -346,12 +346,11 @@ export default function HomePage() {
            
              {/* Background editorial */}
              <div className="absolute inset-0 -z-10">
-               <div className="absolute inset-0 bg-gradient-to-br 
-                               from-black/25 
-                               via-transparent 
-                               to-black/40" />
+               <div className="absolute inset-0 bg-black/20" />
                <div className="absolute top-[-30%] left-[-20%] w-[60%] h-[60%] 
-                               bg-white/5 rounded-full blur-[120px]" />
+                               bg-[var(--color-primary)]/15 rounded-full blur-[120px]" />
+               <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] 
+                               bg-[var(--color-accent)]/10 rounded-full blur-[100px]" />
              </div>
            
              <div className="max-w-6xl mx-auto space-y-24 relative">
@@ -371,10 +370,8 @@ export default function HomePage() {
                        Trabajo seleccionado
                      </span>
                      <h2 className="font-title text-4xl sm:text-5xl md:text-6xl leading-[1.05]" style={{ color: "var(--color-soft)" }}>
-                       Proyectos que generan
-                       <span className="block opacity-90">
-                         impacto real
-                       </span>
+                       Proyectos que generan<br />
+                       <span style={{ color: "var(--color-accent)" }}>impacto real</span>
                      </h2>
                    </div>
            
@@ -389,23 +386,19 @@ export default function HomePage() {
                    <Link
               href="/portafolio"
                      className="group relative inline-flex items-center gap-3 px-8 py-4 
-                                rounded-full border border-[var(--color-soft)]/30
-                                bg-[var(--color-soft)]/5 backdrop-blur-sm
-                                transition-all duration-300
-                                hover:bg-[var(--color-soft)] hover:border-[var(--color-soft)]
-                                hover:shadow-lg hover:-translate-y-1"
+                                rounded-full border border-[var(--color-accent)]
+                                bg-[var(--color-accent)]
+                                text-white
+                                transition-all duration-300 
+                                hover:shadow-xl hover:-translate-y-1" style={{color:"var(--color-bg-main)"}}
                    >
-                     <span className="text-sm font-medium text-[var(--color-soft)] 
-                                      transition-colors duration-300 
-                                      group-hover:text-[var(--color-secondary)]">
+                     <span className="text-sm font-medium">
                        Ver portafolio 
                      </span>
                      
                      <ArrowRight 
                        size={18} 
-                       className="text-[var(--color-soft)] transition-all duration-300 
-                                  group-hover:text-[var(--color-secondary)] 
-                                  group-hover:translate-x-1" 
+                       className="transition-all duration-300 group-hover:translate-x-1" 
                      />
                    </Link>
                  </motion.div>
@@ -470,10 +463,9 @@ export default function HomePage() {
              className="
                relative text-center
                rounded-[2.5rem]
-               bg-white/80
-               backdrop-blur-xl
-               border border-black/5
-               shadow-[0_40px_90px_rgba(0,0,0,0.12)]
+               bg-white
+               border border-[var(--color-accent)]/20
+               shadow-[0_40px_90px_rgba(0,0,0,0.08)]
                px-8 sm:px-14 py-16 sm:py-20
                space-y-10
              "
@@ -512,12 +504,14 @@ export default function HomePage() {
                  <button className="
                    group inline-flex items-center gap-4
                    rounded-full px-10 py-4
-                   bg-gradient-to-r
-                   btn-outline
-                   shadow-xl
+                   bg-[var(--color-primary)]
+                   text-white
+                   font-medium
+                   shadow-lg
                    transition-all duration-300
                    hover:shadow-2xl
-                   hover:-translate-y-1"
+                   hover:-translate-y-1
+                   hover:bg-[var(--color-primary)]/90"
                  >
                    Iniciar proyecto
                    <span className="transition-transform duration-300 group-hover:translate-x-1">
