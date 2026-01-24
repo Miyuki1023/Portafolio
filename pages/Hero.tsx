@@ -158,13 +158,15 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-100px" }}
         variants={ANIMATIONS.fadeIn}
         id="seccion_llamada"
-        className="bg-[var(--color-primary)] py-6 md:py-8"
+        className="py-6 md:py-10 relative overflow-hidden"
+        style={{ backgroundColor: "var(--color-primary)" }}
       >
         <div className="max-w-6xl mx-auto px-6">
           <p
-            className="font-title text-sm sm:text-base md:text-lg text-center text-white"
+            className="font-title text-sm sm:text-base md:text-lg text-center font-bold"
+            style={{ color: "var(--color-bg-main)" }}
           >
-            Diseño y desarrollo experiencias digitales con propósito, claridad y enfoque en resultados.
+            Diseño y desarrollo experiencias digitales con <span style={{ color: "white" }}>propósito, claridad</span> y <span style={{ color: "white" }}>enfoque en resultados</span>.
           </p>
         </div>
       </motion.section>
@@ -172,7 +174,7 @@ export default function HomePage() {
       {/* =========================
           BENEFICIOS
       ========================= */}
-            <section className="section px-6 bg-white/40 relative overflow-hidden">
+            <section className="section px-6 relative overflow-hidden" style={{ backgroundColor: "var(--color-bg-main)" }}>
           <div className="max-w-6xl mx-auto grid gap-20 lg:grid-cols-2 items-center">
         
             {/* TEXTO */}
@@ -186,72 +188,77 @@ export default function HomePage() {
         
               {/* Heading */}
               <motion.div variants={ANIMATIONS.item} className="space-y-4 max-w-xl">
-                <h2 className="font-title text-2xl sm:text-3xl md:text-4xl text-[var(--color-secondary)]">
+                <h2 className="font-title text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: "var(--color-secondary)" }}>
                   Mi forma de trabajar
-                </h2><br />
-                <p className="text-muted text-sm sm:text-base">
-                  Un enfoque claro, estratégico y centrado en el usuario para diseñar
-                  experiencias digitales con impacto real.
+                </h2>
+                <p className="text-sm sm:text-base max-w-md" style={{ color: "var(--color-muted)" }}>
+                  Un enfoque claro, estratégico y centrado en el usuario para diseñar experiencias digitales con impacto real.
                 </p>
               </motion.div>
         
               {/* Lista */}
               <div className="relative space-y-14 pl-10">
         
-                {/* Línea vertical */}
+                {/* Línea vertical mejorada */}
                 <motion.span
                   initial={{ height: 0 }}
                   whileInView={{ height: "100%" }}
                   transition={{ duration: 1, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="absolute left-4 top-0 w-[2px] rounded-full 
-                  bg-gradient-to-b from-[var(--color-primary)] 
-                  via-[var(--color-accent)] 
-                  to-[var(--color-soft-pink)] opacity-60"
+                  className="absolute left-4 top-0 w-[2px] rounded-full opacity-40"
+                  style={{ backgroundColor: "var(--color-primary)" }}
                 />
         
-                {/* ITEM */}
+                {/* ITEM 1 */}
                 <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
-                  <span className="font-title text-4xl text-[var(--color-primary)] group-hover:scale-110 transition-transform">
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-title text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform"
+                    style={{ backgroundColor: "var(--color-primary)", color: "var(--color-bg-main)" }}
+                  >
                     01
-                  </span>
+                  </div>
                   <div className="space-y-2">
-                    <h3 className="font-title text-lg sm:text-xl text-[var(--color-secondary)]">
+                    <h3 className="font-title text-lg sm:text-xl font-bold" style={{ color: "var(--color-secondary)" }}>
                       Diseño centrado en el usuario
                     </h3>
                     <p className="text-muted text-sm sm:text-base max-w-md">
-                      Investigo, valido y diseño interfaces intuitivas basadas en
-                      necesidades reales y contextos de uso.
+                      Investigo, valido y diseño interfaces intuitivas basadas en necesidades reales y contextos de uso.
                     </p>
                   </div>
                 </motion.div>
         
+                {/* ITEM 2 */}
                 <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
-                  <span className="font-title text-4xl text-[var(--color-accent)] group-hover:scale-110 transition-transform">
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-title text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform"
+                    style={{ backgroundColor: "var(--color-accent)", color: "var(--color-bg-main)" }}
+                  >
                     02
-                  </span>
+                  </div>
                   <div className="space-y-2">
-                    <h3 className="font-title text-lg sm:text-xl text-[var(--color-secondary)]">
+                    <h3 className="font-title text-lg sm:text-xl font-bold" style={{ color: "var(--color-secondary)" }}>
                       Enfoque en resultados
                     </h3>
                     <p className="text-muted text-sm sm:text-base max-w-md">
-                      Cada decisión de diseño responde a objetivos de negocio,
-                      métricas claras y experiencias medibles.
+                      Cada decisión de diseño responde a objetivos de negocio, métricas claras y experiencias medibles.
                     </p>
                   </div>
                 </motion.div>
         
+                {/* ITEM 3 */}
                 <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
-                  <span className="font-title text-4xl text-[var(--color-soft-pink)] group-hover:scale-110 transition-transform">
+                  <div 
+                    className="w-12 h-12 rounded-full flex items-center justify-center font-title text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform"
+                    style={{ backgroundColor: "var(--color-soft-pink)", color: "var(--color-bg-main)" }}
+                  >
                     03
-                  </span>
+                  </div>
                   <div className="space-y-2">
-                    <h3 className="font-title text-lg sm:text-xl text-[var(--color-secondary)]">
+                    <h3 className="font-title text-lg sm:text-xl font-bold" style={{ color: "var(--color-secondary)" }}>
                       Comunicación y colaboración
                     </h3>
                     <p className="text-muted text-sm sm:text-base max-w-md">
-                      Trabajo de forma empática, organizada y transparente con
-                      clientes y equipos multidisciplinarios.
+                      Trabajo de forma empática, organizada y transparente con clientes y equipos multidisciplinarios.
                     </p>
                   </div>
                 </motion.div>
@@ -322,9 +329,9 @@ export default function HomePage() {
                   variants={ANIMATIONS.floating}
                   animate="animate"
                   transition={{ delay: 0.5, duration: 5, repeat: Infinity, ease: "easeInOut" }} 
-                  className="absolute -bottom-8 left-8 bg-white/95 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-[var(--color-soft-pink)]/20 flex items-center gap-4"
+                  className="absolute -bottom-8 left-8 bg-white/95 backdrop-blur-xl p-4 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.1)] border border-[var(--color-bg-secondary)]/20 flex items-center gap-4"
                 >
-                  <div className="bg-[var(--color-soft-pink)]/15 p-3 rounded-xl text-[var(--color-soft-pink)]">
+                  <div className="bg-[var(--color-bg-secondary)]/15 p-3 rounded-xl text-[var(--color-bg-secondary)]">
                       <Code size={24} />
                   </div>
                   <div>
