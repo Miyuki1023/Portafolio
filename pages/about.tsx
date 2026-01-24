@@ -128,8 +128,16 @@ export default function AboutPage() {
           style={{ backgroundColor: "var(--color-secondary)" }}
         >
           {/* Fondo decorativo sutil */}
-          
-          
+          <div
+            className="absolute inset-0 opacity-25 pointer-events-none w-full h-full"
+            style={{ 
+              backgroundImage: "url('/fondo.png')",
+              backgroundSize: "cover",
+              backgroundPosition: "center"
+            }}
+            aria-hidden={true}
+          />
+
           <div className="relative grid md:grid-cols-[260px_1fr] gap-10 items-center lg:gap-20">
             {/* Video Profile */}
             <motion.div 
@@ -543,7 +551,7 @@ export default function AboutPage() {
           variants={itemVariants}
           className="text-center space-y-6 py-12"
         >
-          <h2 className="font-title text-3xl sm:text-4xl font-bold" style={{ color: "var(--color-secondary)" }}>
+          <h2 className="font-title text-3xl sm:text-4xl font-bold py-4 text-center" style={{ color: "var(--color-secondary)" }}>
             ¿Listo para crear juntos?
           </h2>
           

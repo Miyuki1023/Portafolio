@@ -536,10 +536,10 @@ export const projects: Project[] = [
     nextStepsNote:
       "Se plantea realizar pruebas de usabilidad y validar el flujo de compra con usuarios reales antes de su implementación final.",
    mockups: [
-        "/jeshy/foto1.jpeg",
-        "/jeshy/foto2.jpeg",
-        "/jeshy/foto3.png",
-        "/jeshy/foto4.jpeg",
+        "/jeshy/Foto1.jpeg",
+        "/jeshy/jeshy-cover.jpeg",
+        "/jeshy/Foto3.jpeg",
+        "/jeshy/Foto4.jpeg",
       ],
   
     },

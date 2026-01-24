@@ -544,7 +544,7 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
     relative
     bg-[var(--color-secondary)]
     text-white
-    lg:h-[400vh]
+    lg:h-[100vh]
     overflow-hidden
   "
 >
