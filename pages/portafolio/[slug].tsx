@@ -681,16 +681,36 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
                       shadow-[0_30px_80px_rgba(0,0,0,0.3)]
                     "
                   >
-                    <Image
-                      src={
+                    {(() => {
+                      const src =
                         project.solution.mockups?.[currentMockup] ||
-                        project.cover
+                        project.cover;
+                      const isVideo =
+                        src.endsWith(".webm") || src.endsWith(".mp4");
+
+                      if (isVideo) {
+                        return (
+                          <video
+                            src={src}
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-contain p-6 sm:p-8"
+                          />
+                        );
                       }
-                      alt="Prototipo final"
-                      fill
-                      priority
-                      className="object-contain p-6 sm:p-8 w-auto h-auto"
-                    />
+
+                      return (
+                        <Image
+                          src={src}
+                          alt="Prototipo final"
+                          fill
+                          priority
+                          className="object-contain p-6 sm:p-8 w-auto h-auto"
+                        />
+                      );
+                    })()}
                   </div>
                 </motion.div>
               </AnimatePresence>
@@ -700,42 +720,57 @@ export default function DetalleProyecto({ project, nextProject }: Props) {
           {/* MOBILE / TABLET */}
           {!isDesktop && (
             <div className="space-y-24 w-full py-12">
-              {project.solution.mockups?.map((src, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ duration: 0.6, ease: "easeOut" }}
-                  className="relative"
-                >
-                  {/* Fondo difuminado detrás */}
-                  <div className="absolute inset-4 bg-white/20 blur-2xl rounded-full" />
+              {project.solution.mockups?.map((src, index) => {
+                const isVideo = src.endsWith(".webm") || src.endsWith(".mp4");
 
-                  <div
-                    className="
-                      relative h-[550px]
-                      rounded-[3rem]
-                      overflow-hidden
-                      bg-gradient-to-br from-white to-gray-100
-                      shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]
-                      border-[8px] border-white/10
-                    "
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-100px" }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    className="relative"
                   >
-                    <Image
-                      src={src}
-                      alt={`Vista de solución ${index + 1}`}
-                      fill
-                      className="object-contain p-6"
-                    />
-                  </div>
+                    {/* Fondo difuminado detrás */}
+                    <div className="absolute inset-4 bg-white/20 blur-2xl rounded-full" />
 
-                  {/* Número decorativo */}
-                  <div className="absolute -top-12 -right-4 text-[8rem] font-title text-white opacity-5 font-bold leading-none pointer-events-none">
-                    {index + 1}
-                  </div>
-                </motion.div>
-              ))}
+                    <div
+                      className="
+                        relative h-[550px]
+                        rounded-[3rem]
+                        overflow-hidden
+                        bg-gradient-to-br from-white to-gray-100
+                        shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)]
+                        border-[8px] border-white/10
+                      "
+                    >
+                      {isVideo ? (
+                        <video
+                          src={src}
+                          autoPlay
+                          loop
+                          muted
+                          playsInline
+                          className="w-full h-full object-contain p-6"
+                        />
+                      ) : (
+                        <Image
+                          src={src}
+                          alt={`Vista de solución ${index + 1}`}
+                          fill
+                          className="object-contain p-6"
+                        />
+                      )}
+                    </div>
+
+                    {/* Número decorativo */}
+                    <div className="absolute -top-12 -right-4 text-[8rem] font-title text-white opacity-5 font-bold leading-none pointer-events-none">
+                      {index + 1}
+                    </div>
+                  </motion.div>
+                );
+              })}
             </div>
           )}
         </div>

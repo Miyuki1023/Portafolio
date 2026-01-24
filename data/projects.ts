@@ -360,8 +360,8 @@ export const projects: Project[] = [
      mockups: [
         "/ProfeIdeal/Foto1.jpeg",
         "/ProfeIdeal/Foto2.webm",
-        "/ProfeIdeal/Foto3.png",
-        "/ProfeIdeal/Foto4.jpeg",
+        "/ProfeIdeal/Foto3.jpeg",
+        "/ProfeIdeal/Foto4.png",
       ],
  
     },
@@ -389,7 +389,7 @@ export const projects: Project[] = [
   title: "Jeshy E-commerce",
   subtitle: "Optimización de la experiencia de compra online",
   category: "UX/UI · Research · E-commerce",
-  cover: "/jeshy-cover.jpg",
+  cover: "/jeshy/jeshy-cover.jpeg",
   role: "UX/UI Designer · Research",
   duration: "5 semanas",
 
@@ -446,7 +446,7 @@ export const projects: Project[] = [
         "Información dispersa o incompleta en la tienda online",
       ],
 
-      img: "/persona-valeria.jpg",
+      img: "/jeshy/persona3.jpg",
     },
 
     journey: [
@@ -535,7 +535,14 @@ export const projects: Project[] = [
 
     nextStepsNote:
       "Se plantea realizar pruebas de usabilidad y validar el flujo de compra con usuarios reales antes de su implementación final.",
-  },
+   mockups: [
+        "/jeshy/foto1.jpeg",
+        "/jeshy/foto2.jpeg",
+        "/jeshy/foto3.png",
+        "/jeshy/foto4.jpeg",
+      ],
+  
+    },
 
   // ================= RESULTADOS =================
   outcomes: {
@@ -560,7 +567,7 @@ export const projects: Project[] = [
   title: "Plataforma de Reserva de Consumo",
   subtitle: "Sistema digital de reserva de alimentos para comunidad universitaria",
   category: "UX/UI · Research · Web Platform",
-  cover: "/reserva-consumo-cover.jpg",
+  cover: "/reserva/reserva.jpeg",
   role: "UX/UI Designer · UX Research",
   duration: "5 semanas",
 
@@ -618,7 +625,7 @@ export const projects: Project[] = [
         "Pérdida de tiempo en horas pico",
       ],
 
-      img: "/persona-daniel.jpg",
+      img: "/reserva/persona_4.jpg",
     },
 
     journey: [
@@ -706,7 +713,14 @@ export const projects: Project[] = [
 
     nextStepsNote:
       "Se plantea realizar pruebas de usabilidad y optimizar la plataforma con base en métricas de uso real.",
-  },
+    mockups: [
+        "/reserva/Foto1.jpeg",
+        "/reserva/Foto2.mp4",
+        "/reserva/Foto3.mp4",
+        "/reserva/Foto4.png",
+      ], 
+ 
+    },
 
   // ================= RESULTADOS =================
   outcomes: {
