@@ -389,7 +389,7 @@ export const projects: Project[] = [
   title: "Jeshy E-commerce",
   subtitle: "Optimización de la experiencia de compra online",
   category: "UX/UI · Research · E-commerce",
-  cover: "/jeshy/jeshy-cover.jpeg",
+  cover: "/Jeshy/jeshy-cover.jpeg",
   role: "UX/UI Designer · Research",
   duration: "5 semanas",
 
@@ -446,7 +446,7 @@ export const projects: Project[] = [
         "Información dispersa o incompleta en la tienda online",
       ],
 
-      img: "/jeshy/persona3.jpg",
+      img: "/Jeshy/persona3.jpg",
     },
 
     journey: [
@@ -536,10 +536,10 @@ export const projects: Project[] = [
     nextStepsNote:
       "Se plantea realizar pruebas de usabilidad y validar el flujo de compra con usuarios reales antes de su implementación final.",
    mockups: [
-        "/jeshy/Foto1.jpeg",
-        "/jeshy/jeshy-cover.jpeg",
-        "/jeshy/Foto3.jpeg",
-        "/jeshy/Foto4.jpeg",
+        "/Jeshy/Foto1.jpeg",
+        "/Jeshy/jeshy-cover.jpeg",
+        "/Jeshy/Foto3.jpeg",
+        "/Jeshy/Foto4.jpeg",
       ],
   
     },
