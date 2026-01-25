@@ -428,7 +428,7 @@ export default function HomePage() {
                    ">
                   Metodología
                 </span>
-                <h2 className="font-title text-3xl sm:text-4xl md:text-5xl font-bold leading-tight" style={{ color: "var(--color-secondary)" }}>
+                <h2 className="font-title text-3xl sm:text-4xl md:text-5xl font-bold leading-tight py-4" style={{ color: "var(--color-secondary)" }}>
                   Mi forma de trabajar es sistemática y centrada en valor
                 </h2>
                 <p className="text-sm sm:text-base max-w-md" style={{ color: "var(--color-muted)" }}>
