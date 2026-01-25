@@ -1,0 +1,68 @@
+<svg width="800" height="400" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background gradient effect -->
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#DD2D4A;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#FFC0CB;stop-opacity:0.03" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bgGradient)"/>
+  
+  <!-- Decorative elements on left -->
+  <circle cx="80" cy="80" r="60" fill="none" stroke="#DD2D4A" stroke-width="2" opacity="0.3"/>
+  <circle cx="80" cy="80" r="40" fill="none" stroke="#DD2D4A" stroke-width="1.5" opacity="0.2"/>
+  
+  <!-- Center showcase - Multiple devices mockup -->
+  <!-- Desktop mockup (center, larger) -->
+  <g>
+    <rect x="250" y="80" width="300" height="240" rx="8" fill="white" stroke="#DD2D4A" stroke-width="2.5" stroke-opacity="0.4"/>
+    
+    <!-- Screen content -->
+    <rect x="270" y="120" width="260" height="160" fill="#DD2D4A" opacity="0.08"/>
+    
+    <!-- Placeholder elements for design -->
+    <circle cx="310" cy="150" r="15" fill="#DD2D4A" opacity="0.4"/>
+    <rect x="350" y="145" width="120" height="8" fill="#DD2D4A" opacity="0.3" rx="4"/>
+    <rect x="350" y="165" width="150" height="6" fill="#DD2D4A" opacity="0.2" rx="3"/>
+    
+    <line x1="280" y1="200" x2="500" y2="200" stroke="#DD2D4A" stroke-width="1.5" opacity="0.15"/>
+    <line x1="280" y1="220" x2="480" y2="220" stroke="#DD2D4A" stroke-width="1.5" opacity="0.15"/>
+    <line x1="280" y1="240" x2="460" y2="240" stroke="#DD2D4A" stroke-width="1.5" opacity="0.15"/>
+    
+    <!-- Bottom stand -->
+    <rect x="370" y="320" width="60" height="4" rx="2" fill="#DD2D4A" opacity="0.3"/>
+    <rect x="350" y="324" width="100" height="2" rx="1" fill="#DD2D4A" opacity="0.2"/>
+  </g>
+  
+  <!-- Mobile mockup (right, smaller) -->
+  <g>
+    <rect x="600" y="140" width="140" height="200" rx="12" fill="white" stroke="#DD2D4A" stroke-width="2" stroke-opacity="0.35"/>
+    
+    <!-- Status bar -->
+    <rect x="610" y="150" width="120" height="20" fill="#DD2D4A" opacity="0.08" rx="2"/>
+    
+    <!-- Screen content -->
+    <rect x="610" y="180" width="120" height="140" fill="#DD2D4A" opacity="0.06"/>
+    
+    <circle cx="625" cy="200" r="10" fill="#DD2D4A" opacity="0.3"/>
+    <rect x="645" y="197" width="70" height="5" fill="#DD2D4A" opacity="0.25" rx="2"/>
+    
+    <line x1="615" y1="230" x2="725" y2="230" stroke="#DD2D4A" stroke-width="1" opacity="0.12"/>
+  </g>
+  
+  <!-- Decorative elements on right -->
+  <circle cx="740" cy="320" r="50" fill="none" stroke="#DD2D4A" stroke-width="2" opacity="0.3"/>
+  <circle cx="740" cy="320" r="30" fill="none" stroke="#DD2D4A" stroke-width="1.5" opacity="0.2"/>
+  
+  <!-- Text labels -->
+  <text x="150" y="380" font-family="system-ui, -apple-system" font-size="14" fill="#DD2D4A" opacity="0.6" text-anchor="middle">
+    Responsive
+  </text>
+  <text x="400" y="380" font-family="system-ui, -apple-system" font-size="14" fill="#DD2D4A" opacity="0.6" text-anchor="middle">
+    Diseño Estratégico
+  </text>
+  <text x="670" y="380" font-family="system-ui, -apple-system" font-size="14" fill="#DD2D4A" opacity="0.6" text-anchor="middle">
+    Mobile First
+  </text>
+</svg>

@@ -71,11 +71,11 @@ export default function HomePage() {
     relative
     overflow-hidden
     px-6
-    sm:px-32
-    xl:px-24
+    sm:px-34
+    xl:px-26
     py-20
-    sm:py-32
-    xl:py-3
+    sm:py-34
+    xl:py-6
   "
 >
         <div className="max-w-6xl mx-auto grid gap-14 items-center lg:grid-cols-2">
@@ -84,7 +84,7 @@ export default function HomePage() {
             variants={ANIMATIONS.container}
             initial="hidden"
             animate="visible"
-            className="space-y-6 text-center lg:text-left"
+            className="space-y-6 text-center lg:text-left py-4"
           >
             <motion.span
               variants={ANIMATIONS.item}
@@ -97,17 +97,15 @@ export default function HomePage() {
               variants={ANIMATIONS.item}
               className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-[var(--color-secondary)]"
             >
-              Transformo ideas en{" "}
+              Combierto ideas en {" "}
               <span className="text-[var(--color-primary)]">experiencias digitales</span>{" "}
-              <span className="block text-[var(--color-secondary)]">funcionales y atractivas</span>
             </motion.h1>
       
             <motion.p
               variants={ANIMATIONS.item}
-              className="max-w-xl mx-auto lg:mx-0 text-muted text-sm sm:text-base"
+              className="max-w-xl mx-auto lg:mx-0 text-muted text-sm sm:text-base py-4"
             >
-              Diseño y desarrollo experiencias digitales con propósito, claridad
-              y enfoque en resultados reales.
+              Soy Miyuki. Diseño y desarrollo experiencias digitales con propósito, claridad y resultados reales.
             </motion.p>
       
             <motion.div
@@ -116,7 +114,7 @@ export default function HomePage() {
             >
               <Link
               href="/portafolio"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] font-medium text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--color-primary)] font-medium text-sm hover:shadow-lg hover:scale-105 transition-all duration-300 text-center justify-center"
               style={{color:"var(--color-bg-main)"}}
               >
                 Ver portafolio
@@ -158,21 +156,255 @@ export default function HomePage() {
         viewport={{ once: true, margin: "-100px" }}
         variants={ANIMATIONS.fadeIn}
         id="seccion_llamada"
-        className="py-6 md:py-10 relative overflow-hidden"
+        className="relative overflow-hidden py-6 sm:py-16 md:py-20 lg:py-24"
         style={{ backgroundColor: "var(--color-primary)" }}
       >
-        <div className="max-w-6xl mx-auto px-6">
-          <p
-            className="font-title text-sm sm:text-base md:text-lg text-center font-bold"
-            style={{ color: "var(--color-bg-main)" }}
-          >
-            Diseño y desarrollo experiencias digitales con <span style={{ color: "white" }}>propósito, claridad</span> y <span style={{ color: "white" }}>enfoque en resultados</span>.
-          </p>
+        {/* Elementos decorativos de fondo */}
+        <div className="absolute inset-0 -z-10">
+          <div className="absolute top-0 left-0 w-40 h-40 bg-white/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-60 h-60 bg-white/5 rounded-full blur-3xl translate-x-1/3 translate-y-1/3" />
+        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Icono de comilla SVG */}
+          <div className="flex justify-center mb-6 sm:mb-8">
+            <Image
+              src="/quote-icon.svg"
+              alt="Icono de comilla"
+              width={30}
+              height={60}
+              className="opacity-90 justify-center"
+            />
+          </div>
+
+          <div className="space-y-4 sm:space-y-6 text-center">
+            <p
+              className="font-title text-lg sm:text-2xl md:text-3xl lg:text-4xl leading-snug sm:leading-relaxed md:leading-relaxed font-bold max-w-4xl mx-auto"
+              style={{ color: "var(--color-bg-main)" }}
+            >
+              El diseño no es solo cómo se ve o cómo se siente.
+              <br className="hidden sm:block" />
+              <span className="block mt-2 sm:mt-0">El diseño es cómo funciona.</span>
+            </p>
+
+            <div className="flex justify-center gap-1 py-4 sm:py-4">
+              <div className="w-1.5 h-1.5 rounded-full opacity-60" style={{ backgroundColor: "var(--color-bg-main)" }} />
+              <div className="w-1.5 h-1.5 rounded-full opacity-40" style={{ backgroundColor: "var(--color-bg-main)" }} />
+            </div>
+
+            {/* Autor */}
+            <p className="text-sm sm:text-base md:text-lg font-medium opacity-80" style={{ color: "var(--color-bg-main)" }}>
+              Don Norman
+            </p>
+          </div>
         </div>
       </motion.section>
 
+
+    {/* =========================
+    SOBRE MI — FILOSOFÍA
+========================= */}
+<motion.section
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, margin: "-120px" }}
+  variants={ANIMATIONS.container}
+  className="relative overflow-hidden py-24 sm:py-28 lg:py-32 px-4 sm:px-6 lg:px-8"
+  style={{ backgroundColor: "var(--color-bg-main)" }}
+>
+  {/* FONDO SUAVE */}
+  <div className="absolute inset-0 -z-10">
+    <div className="absolute top-1/3 right-0 w-80 h-80 bg-[var(--color-primary)]/5 rounded-full blur-3xl" />
+    <div className="absolute bottom-0 left-0 w-[28rem] h-[28rem] bg-[var(--color-soft-pink)]/10 rounded-full blur-3xl" />
+  </div>
+
+  <div className="max-w-6xl mx-auto">
+    {/* HEADER */}
+    <motion.div
+      variants={ANIMATIONS.item}
+      className="mb-16 sm:mb-20 space-y-4 max-w-3xl"
+    >
+      <span
+        className="
+          inline-block text-xs tracking-[0.25em] uppercase
+          px-6 py-2 rounded-full font-medium
+        "
+        style={{
+          color: "var(--color-primary)",
+          backgroundColor: "rgba(221,45,74,0.08)",
+        }}
+      >
+        Mi filosofía
+      </span>
+
+      <h2
+        className="font-title text-4xl sm:text-5xl md:text-6xl font-bold leading-tight"
+        style={{ color: "var(--color-secondary)" }}
+      >
+        Diseño que no compite.
+        <br className="hidden sm:block" />
+        <span style={{ color: "var(--color-primary)" }}>Que resuelve.</span>
+      </h2>
+    </motion.div>
+
+    {/* GRID PRINCIPAL */}
+    <div className="grid lg:grid-cols-3 gap-10 lg:gap-14 items-start">
+      
+      {/* TEXTO */}
+      <motion.div
+        variants={ANIMATIONS.item}
+        className="lg:col-span-2 space-y-8"
+      >
+        <p
+          className="text-lg sm:text-xl font-semibold leading-relaxed"
+          style={{ color: "var(--color-primary)" }}
+        >
+          El buen diseño resuelve problemas reales.
+          No compite por atención.
+        </p>
+
+        <p
+          className="text-base sm:text-lg leading-relaxed"
+          style={{ color: "var(--color-secondary)" }}
+        >
+          Escucho usuarios y contexto. Analizo a fondo. Luego diseño interfaces claras que funcionan y guían naturalmente hacia objetivos reales.
+        </p>
+
+        {/* PRINCIPIOS */}
+        <div className="grid sm:grid-cols-2 gap-4 pt-2">
+          {[
+            "Investigación antes de estética",
+            "Interfaces basadas en UX",
+            "Claridad funcional total",
+            "Escalable desde el inicio",
+          ].map((item, index) => (
+            <motion.div
+              key={index}
+              variants={ANIMATIONS.item}
+              className="
+                flex gap-3 p-4 rounded-xl
+                border border-[var(--color-primary)]/15
+                transition-all duration-300
+                hover:bg-[var(--color-primary)]/5
+                hover:border-[var(--color-primary)]/30
+              "
+            >
+              <span
+                className="w-2 h-2 mt-2 rounded-full flex-shrink-0"
+                style={{ backgroundColor: "var(--color-primary)" }}
+              />
+              <p
+                className="text-sm sm:text-base font-medium"
+                style={{ color: "var(--color-secondary)" }}
+              >
+                {item}
+              </p>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* DIFERENCIAL - Más impactante */}
+        <motion.div
+          variants={ANIMATIONS.item}
+          className="
+            mt-10 p-6 sm:p-8 rounded-2xl
+            border-2 border-[var(--color-accent)]/40
+            bg-gradient-to-br from-[var(--color-accent)]/10 to-[var(--color-accent)]/5
+          "
+        >
+          <div className="space-y-3">
+            <p
+              className="text-xs uppercase tracking-widest font-bold"
+              style={{ color: "var(--color-accent)" }}
+            >
+              Mi ventaja
+            </p>
+            <p
+              className="text-base sm:text-lg font-bold leading-relaxed"
+              style={{ color: "var(--color-secondary)" }}
+            >
+              UX/UI + Frontend en una persona.
+            </p>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--color-secondary)" }}
+            >
+              Pienso en usuarios y en cómo se construye. Tu idea mantiene integridad desde diseño hasta código.
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+
+      {/* TARJETA LATERAL - Con más peso visual */}
+      <motion.div
+        variants={ANIMATIONS.item}
+        className="
+          p-6 sm:p-8 rounded-3xl
+          border-2 border-[var(--color-primary)]/25
+          backdrop-blur-xl
+          sticky top-20
+        "
+        style={{ 
+          backgroundColor: "rgba(221,45,74,0.08)",
+        }}
+      >
+        <div className="space-y-6">
+          <div className="space-y-2">
+            <p
+              className="text-xs uppercase tracking-widest font-bold"
+              style={{ color: "var(--color-primary)" }}
+            >
+              En cada proyecto
+            </p>
+            <h3
+              className="font-title text-2xl sm:text-3xl font-bold"
+              style={{ color: "var(--color-secondary)" }}
+            >
+              Soluciones, no decoración.
+            </h3>
+          </div>
+
+          {/* Ilustración SVG */}
+          <div className="flex justify-center py-4">
+            <Image
+              src="/design-solution-icon.svg"
+              alt="Icono de soluciones de diseño"
+              width={100}
+              height={100}
+              className="opacity-90"
+            />
+          </div>
+
+          <div className="space-y-3 text-sm leading-relaxed" style={{ color: "var(--color-secondary)" }}>
+            <p>✓ Research profundo</p>
+            <p>✓ Diseño estratégico</p>
+            <p>✓ Código limpio</p>
+            <p>✓ Impacto medible</p>
+          </div>
+
+          <Link
+            href="/about"
+            className="
+              inline-flex items-center justify-center w-full
+              px-6 py-3 rounded-full text-sm font-medium
+              transition-all duration-300
+              hover:shadow-lg hover:scale-105
+            "
+            style={{
+              backgroundColor: "var(--color-primary)",
+              color: "var(--color-bg-main)",
+            }}
+          >
+            Ver más →
+          </Link>
+        </div>
+      </motion.div>
+    </div>
+  </div>
+</motion.section>
+
+
       {/* =========================
-          BENEFICIOS
+          MI FORMA DE TRABAJAR - METODOLOGÍA ESTRATÉGICA
       ========================= */}
             <section className="section px-6 relative overflow-hidden" style={{ backgroundColor: "var(--color-bg-main)" }}>
           <div className="max-w-6xl mx-auto grid gap-20 lg:grid-cols-2 items-center">
@@ -186,13 +418,21 @@ export default function HomePage() {
               className="space-y-16"
             >
         
-              {/* Heading */}
+              {/* Heading mejorado */}
               <motion.div variants={ANIMATIONS.item} className="space-y-4 max-w-xl">
-                <h2 className="font-title text-2xl sm:text-3xl md:text-4xl font-bold" style={{ color: "var(--color-secondary)" }}>
-                  Mi forma de trabajar
+                <span className="
+                     inline-block text-xs tracking-[0.2em] uppercase
+                     text-[var(--color-accent)]
+                     bg-[var(--color-accent)]/10
+                     px-5 py-2 rounded-full
+                   ">
+                  Metodología
+                </span>
+                <h2 className="font-title text-3xl sm:text-4xl md:text-5xl font-bold leading-tight" style={{ color: "var(--color-secondary)" }}>
+                  Mi forma de trabajar es sistemática y centrada en valor
                 </h2>
                 <p className="text-sm sm:text-base max-w-md" style={{ color: "var(--color-muted)" }}>
-                  Un enfoque claro, estratégico y centrado en el usuario para diseñar experiencias digitales con impacto real.
+                  Tres pilares que guían cada proyecto: investigación profunda, diseño pixel-perfect y desarrollo limpio. Todo conectado por una idea: el usuario siempre al centro.
                 </p>
               </motion.div>
         
@@ -209,7 +449,7 @@ export default function HomePage() {
                   style={{ backgroundColor: "var(--color-primary)" }}
                 />
         
-                {/* ITEM 1 */}
+                {/* ITEM 1 - RESEARCH */}
                 <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
                   <div 
                     className="w-12 h-12 rounded-full flex items-center justify-center font-title text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform"
@@ -217,17 +457,22 @@ export default function HomePage() {
                   >
                     01
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <h3 className="font-title text-lg sm:text-xl font-bold" style={{ color: "var(--color-secondary)" }}>
-                      Diseño centrado en el usuario
+                      Investigo antes de diseñar
                     </h3>
-                    <p className="text-muted text-sm sm:text-base max-w-md">
-                      Investigo, valido y diseño interfaces intuitivas basadas en necesidades reales y contextos de uso.
+                    <p className="text-muted text-sm sm:text-base max-w-md leading-relaxed">
+                      Hablo con usuarios reales, analizo el contexto, entiendo los objetivos de negocio y valido hipótesis. El diseño comienza con preguntas, no con pixels.
                     </p>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-primary)]/10" style={{color: "var(--color-primary)"}}>Research</span>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-primary)]/10" style={{color: "var(--color-primary)"}}>User Testing</span>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-primary)]/10" style={{color: "var(--color-primary)"}}>Strategy</span>
+                    </div>
                   </div>
                 </motion.div>
         
-                {/* ITEM 2 */}
+                {/* ITEM 2 - DESIGN */}
                 <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
                   <div 
                     className="w-12 h-12 rounded-full flex items-center justify-center font-title text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform"
@@ -235,17 +480,22 @@ export default function HomePage() {
                   >
                     02
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <h3 className="font-title text-lg sm:text-xl font-bold" style={{ color: "var(--color-secondary)" }}>
-                      Enfoque en resultados
+                      Diseño que funciona y fascina
                     </h3>
-                    <p className="text-muted text-sm sm:text-base max-w-md">
-                      Cada decisión de diseño responde a objetivos de negocio, métricas claras y experiencias medibles.
+                    <p className="text-muted text-sm sm:text-base max-w-md leading-relaxed">
+                      Creo interfaces intuitivas con propósito. Cada elemento tiene una razón. Micro-interacciones, animaciones, jerarquía visual: todo comunica algo al usuario.
                     </p>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-accent)]/10" style={{color: "var(--color-accent)"}}>Figma</span>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-accent)]/10" style={{color: "var(--color-accent)"}}>UI/UX</span>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-accent)]/10" style={{color: "var(--color-accent)"}}>Design Systems</span>
+                    </div>
                   </div>
                 </motion.div>
         
-                {/* ITEM 3 */}
+                {/* ITEM 3 - DEV */}
                 <motion.div variants={ANIMATIONS.item} className="flex gap-6 items-start group">
                   <div 
                     className="w-12 h-12 rounded-full flex items-center justify-center font-title text-xl font-bold flex-shrink-0 group-hover:scale-110 transition-transform"
@@ -253,13 +503,18 @@ export default function HomePage() {
                   >
                     03
                   </div>
-                  <div className="space-y-2">
+                  <div className="space-y-3">
                     <h3 className="font-title text-lg sm:text-xl font-bold" style={{ color: "var(--color-secondary)" }}>
-                      Comunicación y colaboración
+                      Código limpio y escalable
                     </h3>
-                    <p className="text-muted text-sm sm:text-base max-w-md">
-                      Trabajo de forma empática, organizada y transparente con clientes y equipos multidisciplinarios.
+                    <p className="text-muted text-sm sm:text-base max-w-md leading-relaxed">
+                      Mi stack: Next.js, React, TypeScript y Tailwind CSS. Código mantenible, componentes reutilizables, performance optimizado. El diseño vive en código bien escrito.
                     </p>
+                    <div className="flex flex-wrap gap-2 pt-2">
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-soft-pink)]/10" style={{color: "var(--color-soft-pink)"}}>Next.js</span>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-soft-pink)]/10" style={{color: "var(--color-soft-pink)"}}>React</span>
+                      <span className="text-xs px-3 py-1 rounded-full bg-[var(--color-soft-pink)]/10" style={{color: "var(--color-soft-pink)"}}>Performance</span>
+                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -304,7 +559,7 @@ export default function HomePage() {
                   </div>
                   <div>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Research</p>
-                      <p className="text-base font-bold text-[var(--color-secondary)]">User Centric</p>
+                      <p className="text-base font-bold text-[var(--color-secondary)]">User First</p>
                   </div>
                 </motion.div>
 
@@ -320,7 +575,7 @@ export default function HomePage() {
                   </div>
                   <div>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Design</p>
-                      <p className="text-base font-bold text-[var(--color-secondary)]">Pixel Perfect</p>
+                      <p className="text-base font-bold text-[var(--color-secondary)]">Purpose-driven</p>
                   </div>
                 </motion.div>
 
@@ -336,7 +591,7 @@ export default function HomePage() {
                   </div>
                   <div>
                       <p className="text-xs text-gray-500 font-bold uppercase tracking-wider">Dev</p>
-                      <p className="text-base font-bold text-[var(--color-secondary)]">Clean Code</p>
+                      <p className="text-base font-bold text-[var(--color-secondary)]">Production Ready</p>
                   </div>
                 </motion.div>
               </div>
@@ -347,7 +602,7 @@ export default function HomePage() {
 </section>
 
            {/* =========================  
-            PROYECTOS – UX/UI SENIOR
+            PROYECTOS – CASOS DE ÉXITO
            ========================= */}
            <section className="relative overflow-hidden py-28 px-6 bg-[var(--color-secondary)]">
            
@@ -372,19 +627,17 @@ export default function HomePage() {
                >
            
                  <motion.div variants={ANIMATIONS.item} className="space-y-8 max-w-xl" style={{ color: "var(--color-soft)" }}>
-                   <div className="space-y-2">
+                   <div className="space-y-4">
                      <span className="text-xs uppercase tracking-[0.2em] opacity-70 block">
-                       Trabajo seleccionado
+                       Lo que he construido
                      </span>
                      <h2 className="font-title text-4xl sm:text-5xl md:text-6xl leading-[1.05]" style={{ color: "var(--color-soft)" }}>
-                       Proyectos que generan<br />
-                       <span style={{ color: "var(--color-accent)" }}>impacto real</span>
+                       Proyectos donde aplicamos la metodología
                      </h2>
                    </div>
-           
+
                    <p className="text-sm sm:text-base leading-relaxed opacity-90 max-w-md" style={{ color: "var(--color-soft)" }}>
-                     Casos donde combino UX/UI, frontend y pensamiento estratégico
-                     para resolver problemas reales de negocio.
+                     Cada proyecto en mi portafolio es resultado de research profundo, diseño estratégico y desarrollo limpio. Casos reales donde hemos resuelto problemas y generado impacto medible.
                    </p>
                  </motion.div>
            
@@ -400,7 +653,7 @@ export default function HomePage() {
                                 hover:shadow-xl hover:-translate-y-1" style={{color:"var(--color-bg-main)"}}
                    >
                      <span className="text-sm font-medium">
-                       Ver portafolio 
+                       Ver todos los proyectos 
                      </span>
                      
                      <ArrowRight 
@@ -410,7 +663,8 @@ export default function HomePage() {
                    </Link>
                  </motion.div>
                </motion.div>
-           
+
+              
                <motion.div
   variants={ANIMATIONS.container}
   initial="hidden"

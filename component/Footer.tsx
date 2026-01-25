@@ -1,4 +1,6 @@
 import { Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 const Footer = () => {
   return (
@@ -16,12 +18,22 @@ const Footer = () => {
           {/* ================= BRAND ================= */}
           <div className="space-y-5">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white" style={{ backgroundColor: "var(--color-primary)" }}>
-                MP
-              </div>
-              <h3 className="font-title text-2xl font-bold" style={{ color: "var(--color-soft)" }}>
-                Miyuki
-              </h3>
+              <Link
+                 href="/"
+                 className="flex items-center hover:scale-105 transition-transform duration-300"
+                 aria-label="Ir al inicio - Miyu Studio"
+               >
+                 <Image
+                   src="/logoFooter.png"
+                   alt="Miyu Studio"
+                   width={120}
+                   height={36}
+                   className="object-contain drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300 ease-in-out rounded-lg"
+                   priority
+                   unoptimized
+                 />
+               </Link>
+              
             </div>
             <div className="h-1 w-12" style={{ backgroundColor: "var(--color-accent)" }} />
             <p className="text-sm leading-relaxed max-w-sm opacity-90" style={{ color: "var(--color-soft)" }}>
@@ -98,7 +110,7 @@ const Footer = () => {
             <div className="flex flex-wrap gap-3 pt-4 text-sm">
               {[
                 { label: "LinkedIn", href: "https://www.linkedin.com/in/miyuki-panduro-huarote-742568237" },
-                { label: "Instagram", href: "https://www.instagram.com" },
+                { label: "Instagram", href: "https://www.instagram.com/kahorinohika/" },
                 { label: "WhatsApp", href: "https://wa.me/51936693905" },
               ].map((item) => (
                 <a

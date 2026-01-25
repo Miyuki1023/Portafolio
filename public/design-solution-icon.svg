@@ -1,0 +1,21 @@
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="58" fill="#DD2D4A" opacity="0.08" stroke="#DD2D4A" stroke-width="2" stroke-opacity="0.15"/>
+  
+  <!-- Laptop/Device frame -->
+  <rect x="25" y="30" width="70" height="50" rx="4" fill="none" stroke="#DD2D4A" stroke-width="2.5"/>
+  
+  <!-- Screen content - abstract design elements -->
+  <circle cx="45" cy="45" r="6" fill="#DD2D4A" opacity="0.6"/>
+  <circle cx="60" cy="50" r="5" fill="#DD2D4A" opacity="0.4"/>
+  <circle cx="75" cy="45" r="4" fill="#DD2D4A" opacity="0.3"/>
+  
+  <!-- Lines representing content -->
+  <line x1="30" y1="60" x2="50" y2="60" stroke="#DD2D4A" stroke-width="1.5" stroke-opacity="0.5"/>
+  <line x1="30" y1="65" x2="90" y2="65" stroke="#DD2D4A" stroke-width="1.5" stroke-opacity="0.3"/>
+  <line x1="30" y1="70" x2="85" y2="70" stroke="#DD2D4A" stroke-width="1.5" stroke-opacity="0.3"/>
+  
+  <!-- Bottom stand -->
+  <rect x="48" y="80" width="24" height="3" rx="1.5" fill="#DD2D4A" opacity="0.6"/>
+  <rect x="42" y="83" width="36" height="2" rx="1" fill="#DD2D4A" opacity="0.4"/>
+</svg>

@@ -1,0 +1,8 @@
+<svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo suave -->
+  <circle cx="40" cy="40" r="40" fill="#DD2D4A" opacity="0.08"/>
+  
+  <!-- Comilla estilizada -->
+  <path d="M25 35C25 28 30 22 37 22C44 22 49 28 49 35C49 42 44 50 37 52M52 35C52 28 57 22 64 22C71 22 76 28 76 35C76 42 71 50 64 52" 
+        stroke="#DD2D4A" stroke-width="3" stroke-linecap="round" fill="none"/>
+</svg>
