@@ -26,7 +26,7 @@ export default function Navbar() {
         >
           <div className="relative w-24 h-7 sm:w-32 sm:h-9 lg:w-40 lg:h-12">
             <Image
-              src="/logo.png"
+              src="/logo-miyu.png"
               alt="Miyu Studio"
               fill
               className="object-contain drop-shadow-lg hover:drop-shadow-2xl transition-all duration-300"
