@@ -97,7 +97,7 @@ export default function HomePage() {
               variants={ANIMATIONS.item}
               className="font-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight text-[var(--color-secondary)]"
             >
-              Combierto ideas en {" "}
+              Convierto ideas en {" "}
               <span className="text-[var(--color-primary)]">experiencias digitales</span>{" "}
             </motion.h1>
       
